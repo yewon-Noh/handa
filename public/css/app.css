@@ -1,0 +1,21 @@
+.card {
+    max-width: 300px;
+    min-width: 80px;
+    max-height: 300px;
+    margin : auto;
+
+}
+
+.card-img{
+    width: 295px;
+    height: 200px;
+    margin :auto;
+}
+
+.bt-rg {
+    float: right;
+}
+
+.nav-item {
+    margin-left: 50px;
+}

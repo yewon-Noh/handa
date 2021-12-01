@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>SIGN UP</title>
+</head>
+
+<body>
+
+  <script>
+    function name_check() {
+      var name = document.getElementById('name').value;
+
+      if (name == "") {
+        document.getElementById('n_c').innerHTML = "이름을 입력해주세요.";
+        document.getElementById('n_c').style.color = 'red';
+      } else {
+        document.getElementById('n_c').innerHTML = "";
+      }
+    }
+
+    function pw_rechek() {
+      var pwd1 = document.getElementById('pwd1').value;
+      var pwd2 = document.getElementById('pwd2').value;
+
+      if (pwd2 == "") {
+        document.getElementById('p_c').innerHTML = "";
+      } else {
+
+        if (pwd1 == pwd2) {
+          document.getElementById('p2_c').innerHTML = "비밀번호가 일치합니다.";
+          document.getElementById('p2_c').style.color = 'blue';
+        } else {
+          document.getElementById('p2_c').innerHTML = "비밀번호가 일치하지 않습니다.";
+          document.getElementById('p2_c').style.color = 'red';
+        }
+
+      }
+    }
+
+    function email_check() {
+      var email = document.getElementById('email').value;
+
+      var check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+
+      if (email.match(check) != null) {
+        document.getElementById('e_c').innerHTML = "";
+      } else {
+        document.getElementById('e_c').innerHTML = "이메일 형식이 바르지 않습니다.";
+        document.getElementById('e_c').style.color = 'red';
+      }
+
+    }
+
+    function pwd_check() {
+      var pwd = document.getElementById('pwd1').value;
+
+      var check = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/i;
+
+      if (pwd.length > 7) {
+        if (pwd.match(check) != null) {
+          document.getElementById('p1_c').innerHTML = "";
+        } else {
+          document.getElementById('p1_c').innerHTML = "하나 이상의 숫자, 영문, 특수문자를 입력해주세요.";
+          document.getElementById('p1_c').style.color = 'red';
+        }
+      } else {
+        document.getElementById('p1_c').innerHTML = "8자리 이상 입력해주세요.";
+        document.getElementById('p1_c').style.color = 'red';
+      }
+
+
+    }
+  </script>
+
+  <h1>회원가입</h1>
+  <!-- <form name="form" action="/signup" method="post"> -->
+  * 닉네임<br> <input type="text" id="name" placeholder="your name" onchange="name_check()" />
+  &nbsp;<span id="n_c"></span><br />
+  * 이메일<br> <input type="email" id="email" placeholder="your email" onchange="email_check()" />
+  &nbsp;<span id="e_c"></span><br />
+  * 비밀번호<br> <input type="password" id="pwd1" placeholder="password" onchange="pwd_check()" />
+  &nbsp;<span id="p1_c"></span><br />
+  * 비밀번호 확인<br> <input type="password" id="pwd2" placeholder="confirm password" onchange="pw_rechek()" />
+  &nbsp;<span id="p2_c"></span>
+  <p>
+    <button class="submit">회원가입</button>
+    <!-- </form> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+      function signup(data) {
+        console.log(data);
+      }
+
+      $(() => {
+        $('.submit').click(() => {
+          var _name = $('#name').val();
+          var _email = $('#email').val();
+          var _pwd1 = $('#pwd1').val();
+          var _pwd2 = $('#pwd2').val();
+
+          var n_c = $('#n_c').text();
+          var e_c = $('#e_c').text();
+          var p1_c = $('#p1_c').text();
+
+          if (n_c != "" || e_c != "" || p1_c != "") {
+
+          } else {
+            if (_name == "" || _email == "" || _pwd1 == "") {
+
+            } else {
+
+              if (_pwd1 != _pwd2) {
+
+              } else {
+                $.ajax({
+                  url: '/signup',
+                  type: 'post',
+                  data: { "name": _name, "email": _email, "pwd": _pwd1 },
+                  success: function (data) {
+                    alert("성공");
+                  },
+                  error: function (error) {
+
+                  },
+                  complete: function () {
+                    location.href = '/login';
+                  }
+                })
+              }
+            }
+          }
+        })
+      })
+    </script>
+
+</body>
+
+</html>

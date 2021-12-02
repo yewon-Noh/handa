@@ -23,6 +23,9 @@ app.get('/join', function(req, res){
     res.render('join');
 })
 
+app.get('/idPw', function(req, res){
+    res.render('idPw');
+})
 // app.get('/study', function (req, res) {
 //     res.render('study')
 
@@ -42,6 +45,10 @@ app.get('/solutions', function (req, res) {
     res.render('solutions')
 
 });
+
+app.get('/question', function(req, res) {
+    res.render('question');
+})
 
 
 app.listen(app.get('port'), () => {

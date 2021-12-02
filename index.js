@@ -15,15 +15,23 @@ app.get('/', function (req, res) {
 
 });
 
-app.get('/study', function (req, res) {
-    res.render('study')
+app.get('/login', function(req, res){
+    res.render('login');
+})
 
-});
+app.get('/join', function(req, res){
+    res.render('join');
+})
 
-app.get('/study/1', function (req, res) {
-    res.render('study1')
+// app.get('/study', function (req, res) {
+//     res.render('study')
 
-});
+// });
+
+// app.get('/study/1', function (req, res) {
+//     res.render('study1')
+
+// });
 
 app.get('/search', function (req, res) {
     res.render('search')

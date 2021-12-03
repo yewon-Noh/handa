@@ -2,7 +2,7 @@
     max-width: 300px;
     min-width: 80px;
     max-height: 300px;
-    margin : 20px 20px 20px 20px;
+    margin : auto;
     
 
 }
@@ -20,3 +20,4 @@
 .nav-item {
     margin-left: 50px;
 }
+

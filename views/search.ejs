@@ -2,113 +2,127 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>ATEMBUS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>ATEMBUS</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
-
-
-
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
 
 
-    <!-- Custom styles for this template -->
-    <link href="/css/headers.css" rel="stylesheet" type="text/css">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .card-container {
+      margin: 5px 5px;
+      padding: 10px 70px 10px 70px;
+    }
+
+    div.pa {
+      padding: 10px 0px 20px 10px;
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="/css/headers.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
-    <main>
-        <header class="py-3 mb-3 border-bottom">
-            <div class="container container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-              <div class="d-flex">
-              <div class="dropdown">
-                <a href="#" class="align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
-                  <!-- <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false"> -->
-                  <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg> -->
-                  <img src="/images/menu4.png" alt="menu" width="32" height="32">
-                </a>
-                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink">
-                  <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
-                  <li><a class="dropdown-item" href="#">Inventory</a></li>
-                  <li><a class="dropdown-item" href="#">Customers</a></li>
-                  <li><a class="dropdown-item" href="#">Products</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Reports</a></li>
-                  <li><a class="dropdown-item" href="#">Analytics</a></li>
-                </ul>
-              </div>
-        
-              <h4 class="logo">handa</h4>
-            </div>
-        
-              <!-- 로그인 후 -->
-              <div class="d-flex align-items-center">
-                <form class="w-100 me-3">
-                  <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                </form>
-        
-                <div class="flex-shrink-0 dropdown">
-                  <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                  </a>
-                  <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                    <li><a class="dropdown-item" href="#">질문하기</a></li>
-                    <li><a class="dropdown-item" href="#">내 정보</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">로그아웃</a></li>
-                  </ul>
-                </div>
-              </div>
-        
-              <!-- 로그인 전 -->
-              <!-- <div class="d-flex">
-                <div class="col-md text-end">
-                  <button type="button" class="btn btn-outline-primary">Login</button>
-                </div>
-              </div> -->
-        
-            </div>
-          </header>
+  <main>
+    <header class="py-3 mb-3 border-bottom">
+      <div class="container container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+        <div class="d-flex">
+          <!-- <div class="dropdown">
+          <a href="#" class="align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false"> -->
+          <!-- <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false"> -->
+          <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg> -->
+          <!-- <img src="/images/menu4.png" alt="menu" width="32" height="32">
+          </a>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink">
+            <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
+            <li><a class="dropdown-item" href="#">Inventory</a></li>
+            <li><a class="dropdown-item" href="#">Customers</a></li>
+            <li><a class="dropdown-item" href="#">Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Reports</a></li>
+            <li><a class="dropdown-item" href="#">Analytics</a></li>
+          </ul>
+        </div> -->
 
-        <!-- 여기다가 작업하세요 -->
-        <!-- <div class="container">
+          <h4 class="logo">handa</h4>
+        </div>
+
+        <!-- 로그인 후 -->
+        <!-- <div class="d-flex align-items-center">
+          <form class="w-100 me-3">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
+  
+          <div class="flex-shrink-0 dropdown">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+              <li><a class="dropdown-item" href="#">질문하기</a></li>
+              <li><a class="dropdown-item" href="#">채팅</a></li>
+              <li><a class="dropdown-item" href="#">내 정보</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">로그아웃</a></li>
+            </ul>
+          </div>
+        </div> -->
+
+        <!-- 로그인 전 -->
+        <div class="d-flex">
+          <div class="col-md text-end">
+            <button type="button" class="btn btn-outline-warning">Login</button>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- 여기다가 작업하세요 -->
+    <!-- <div class="container">
             <div class="album py-3 ">
                 <div class="row" id="test">
                     
                 </div>
             </div>
         </div> -->
-<div class = "container">
-    <h1>과목명</h1>
-    <h1>대표문제</h1>
+    <div class="container">
+      <div class="card-container">
+        <div class="pa">
+          <!-- <p>문제</p> -->
+          <h2> 검색 결과 </h2>
+        </div>
+
         <!-- <div class="card w-75"> -->
-            <!-- <div class="card-header">
+        <!-- <div class="card-header">
                 문제1
               </div> -->
 
-          <!-- <div class="card border-warning" style="width: 29rem;">
+        <!-- <div class="card border-warning" style="width: 29rem;">
             <img src="/images/heart.PNG" class="card-img" alt="...">
           <div class="card-body">
             <h5 class="card-title">Special title treatment</h5>
@@ -117,23 +131,88 @@
           </div>
         </div> -->
         <!-- </div> -->
-          
-        <div class="card border-warning " >
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="/images/heart.PNG" class="card-img" alt="!!HANDA!!">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">문제</h5>
-                  <p class="card-text">#...<p>#...<p>#... </p>
-                  <a href="#" class = "btn bg-warning">Go!</a>
-                </div>
+
+        <div class="card border-warning mb-3 ">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="/images/heart.PNG" class="card-img" alt="!!HANDA!!">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">문제</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn bg-warning">풀이 보기</a>
               </div>
             </div>
           </div>
+        </div>
 
+        <div class="card border-warning mb-3 ">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="/images/heart.PNG" class="card-img" alt="!!HANDA!!">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">문제</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn bg-warning">풀이 보기</a>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div class="card border-warning mb-3 ">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="/images/heart.PNG" class="card-img" alt="!!HANDA!!">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">문제</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn bg-warning">풀이 보기</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card border-warning mb-3 ">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="/images/heart.PNG" class="card-img" alt="!!HANDA!!">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">문제</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn bg-warning">풀이 보기</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card border-warning mb-3 ">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="/images/heart.PNG" class="card-img" alt="!!HANDA!!">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">문제</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn bg-warning">풀이 보기</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -161,7 +240,7 @@
 
 
 
-  <!-- <script>
+    <!-- <script>
     var i = 5;
   
     var test = document.getElementById("test");
@@ -171,21 +250,22 @@
     for(var a = 0; a < i; a ++){
       
     //   c += "<div class=\"col\">";
-      c += "<div class=\"card border-warning\">";
+      c += "<div class=\"card border-warning mb-3\">";
       c += "<div class=\"row g-0\">";
       c += "<div class=\"col-md-4\">";
       c +=  "<img class=\"card_img\" src=\"/images/heart.PNG\" alt=\"!!HANDA!!\" />";
+      c += "</div>";
       c += "<div class=\"col-md-8\">";
       c +=  "<div class=\"card-body\">";
       c += "<h5 class=\"card-title\">문제</h5>";
-      c += "<p class=\"card-text\">#...<p>#...<p>#... </p>";
-      c +=  "<a href=\"#\" class=\"btn bg-warning\">GO</a>";
+      c += "<p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>";
+      c +=  "<a href=\"#\" class=\"btn bg-warning\">풀이 보기</a>";
       c += "</div></div></div></div>";
   
 
     }
   
-    test.innerHTML = c;
+    test.innerHTML = c
   </script> -->
 
     <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>

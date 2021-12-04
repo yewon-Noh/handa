@@ -37,10 +37,16 @@
       <h1 class="h1 mb-3 fw-normal text-center py-3">HANDA</h1>
 
       <div class="form-floating">
-        <input type="email" class="form-control mg-10" name="email" placeholder="name@example.com" required>
+        <input type="email" class="form-control mg-10" name="email" placeholder="name@example.com" value=<%=email %> required>
         <label for="floatingInput">Email address</label>
 
         <!-- 잠깐 생략 -->
+        <% if (message_email !='' ) {%>
+
+          <span>
+            <%= message_email %>
+          </span>
+          <% } %>
       </div>
 
       <div class="form-floating">
@@ -48,6 +54,11 @@
         <label for="floatingPassword">Password</label>
 
         <!-- 잠깐 생략 -->
+        <% if (message_pw !='' ) {%>
+          <span>
+            <%= message_pw %>
+          </span>
+          <% } %>
       </div>
 
       <div class="mg-10">

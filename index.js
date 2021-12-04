@@ -1,5 +1,13 @@
+require("dotenv").config();
+
 const express = require('express');
 const ejs = require('ejs');
+var session = require('express-session');
+var MySQLStore = require('express-mysql-session')(session);
+const bodyParser = require('body-parser');
+
+const dbOptions = require('./public/js/dbConfig');
+const user = require('./public/js/user');
 
 const app = express();
 
@@ -7,6 +15,14 @@ app.set('port', process.env.PORT || 3000);
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+    secret: 'secret',
+    store: new MySQLStore(dbOptions),
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.use(express.static('public'))
 
@@ -16,11 +32,25 @@ app.get('/', function (req, res) {
 });
 
 app.get('/login', function(req, res){
-    res.render('login');
+    res.render('login', {email:'', message_email:'', message_pw:''})
+})
+
+app.post('/login', function(req, res){
+    user.login(req, res)
 })
 
 app.get('/join', function(req, res){
     res.render('join');
+})
+
+app.post('/join', function(req, res){
+    user.join(req, res)
+    // console.log('으악')
+    // return res.send("1");
+})
+
+app.post('/join/email', function (req, res){
+    user.emailCheck(req, res)
 })
 
 app.get('/idPw', function(req, res){
@@ -30,15 +60,6 @@ app.get('/idPw', function(req, res){
 app.use('/setPw', function(req, res){
     res.render('setPw');
 })
-// app.get('/study', function (req, res) {
-//     res.render('study')
-
-// });
-
-// app.get('/study/1', function (req, res) {
-//     res.render('study1')
-
-// });
 
 app.get('/search', function (req, res) {
     res.render('search')

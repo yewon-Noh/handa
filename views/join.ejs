@@ -15,82 +15,6 @@
 
 <body>
 
-  <script>
-    // username 입력 체크
-    function name_check() {
-      var name = document.getElementById('name').value;
-
-      if (name == "") {
-        document.getElementById('n_c').innerHTML = "* 이름을 입력해주세요.";
-        document.getElementById('n_c').style.color = 'red';
-      } else {
-        document.getElementById('n_c').innerHTML = "";
-      }
-    }
-
-    // 비밀번호 재입력 체크
-    function pw_rechek() {
-      var pwd1 = document.getElementById('pwd1').value;
-      var pwd2 = document.getElementById('pwd2').value;
-
-      if (pwd2 == "") {
-        document.getElementById('p2_c').innerHTML = "비밀번호를 다시 입력해주세요.";
-        document.getElementById('p2_c').style.color = 'red';
-      } else {
-
-        if (pwd1 == pwd2) {
-          document.getElementById('p2_c').innerHTML = "* 비밀번호가 일치합니다.";
-          document.getElementById('p2_c').style.color = 'blue';
-        } else {
-          document.getElementById('p2_c').innerHTML = "* 비밀번호가 일치하지 않습니다.";
-          document.getElementById('p2_c').style.color = 'red';
-        }
-
-      }
-    }
-
-    // 이메일 입력 체크
-    function email_check() {
-      var email = document.getElementById('email').value;
-      var email_ok = document.getElementById('email_ok');
-
-      email_ok.disabled = false;
-
-      var check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
-      if (email.match(check) != null) {
-        document.getElementById('e_c').innerHTML = "";
-        document.getElementById('e_c').style.color = 'blue';
-
-      } else {
-        document.getElementById('e_c').innerHTML = "* 이메일 형식이 바르지 않습니다.";
-        document.getElementById('e_c').style.color = 'red';
-      }
-
-    }
-
-    // 비밀번호 입력 체크
-    function pwd_check() {
-      var pwd = document.getElementById('pwd1').value;
-
-      var check = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/i;
-
-      if (pwd.length > 7) {
-        if (pwd.match(check) != null) {
-          document.getElementById('p1_c').innerHTML = "";
-        } else {
-          document.getElementById('p1_c').innerHTML = "* 하나 이상의 숫자, 영문, 특수문자를 입력해주세요.";
-          document.getElementById('p1_c').style.color = 'red';
-        }
-      } else {
-        document.getElementById('p1_c').innerHTML = "* 8자리 이상 입력해주세요.";
-        document.getElementById('p1_c').style.color = 'red';
-      }
-
-    }
-
-  </script>
-
   <main class="container">
     <h1 class="h1 mb-3 fw-normal text-center py-3">HANDA</h1>
 
@@ -98,7 +22,7 @@
       <label for="name" class="form-label">이름</label>
       <input type="text" class="form-control" id="name" placeholder="username" aria-describedby="button-addon2"
         onchange="name_check()">
-      <div id="n_c"></div>
+      <div id="n_c" class="ch_c"></div>
     </div>
 
     <div class="col-12 mb-3">
@@ -108,44 +32,42 @@
           onchange="email_check()">
         <button class="btn btn-secondary" type="button" id="email_ok">중복 확인</button>
       </div>
-      <div id="e_c"></div>
+      <div id="e_c" class="ch_c"></div>
     </div>
 
     <div class="col-12 mb-3">
       <label for="pwd1" class="form-label">비밀번호</label>
       <input type="password" class="form-control" id="pwd1" placeholder="password" aria-describedby="button-addon2"
         onchange="pwd_check()">
-      <div id="p1_c"></div>
+      <div id="p1_c" class="ch_c"></div>
     </div>
 
     <div class="col-12 mb-3">
       <label for="pwd2" class="form-label">비밀번호 확인</label>
       <input type="password" class="form-control" id="pwd2" placeholder="confirm password"
         aria-describedby="button-addon2" onchange="pw_rechek()">
-      <div id="p2_c"></div>
+      <div id="p2_c" class="ch_c"></div>
     </div>
 
     <div class="col-12 mb-3">
       <label for="tel" class="form-label">연락처</label>
-      <input type="text" class="form-control" id="tel" placeholder="010-1111-2222"
-        aria-describedby="button-addon2">
-      <div id="p2_c"></div>
+      <input type="text" class="form-control" id="tel" placeholder="010-1111-2222" aria-describedby="button-addon2"
+        onchange="tel_check()">
+      <div id="t_c" class="ch_c"></div>
     </div>
 
     <div class="col-12 mb-3">
-      <label for="pwd2" class="form-label">직업</label>
+      <label for="job" class="form-label">직업</label>
 
       <div class="input-group mb-3">
-        <select class="form-select" id="inputGroupSelect02">
+        <select class="form-select" id="job">
           <option selected>학생</option>
           <option value="1">취업준비생</option>
           <option value="2">회사원</option>
           <option value="3">기타</option>
         </select>
-        <!-- <label class="input-group-text" for="inputGroupSelect02">Options</label> -->
       </div>
 
-      <div id="p2_c"></div>
     </div>
 
 
@@ -165,7 +87,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script>
-    function signup(data) {
+    function join(data) {
       console.log(data);
     }
 
@@ -176,24 +98,28 @@
         var _email = $('#email').val();
         var _pwd1 = $('#pwd1').val();
         var _pwd2 = $('#pwd2').val();
+        var _tel = $('#tel').val();
+        var _job = $('#job').val();
 
         var n_c = $('#n_c').text();
         var e_c = $('#e_c').text();
         var p1_c = $('#p1_c').text();
+        var t_c = $('#t_c').text();
 
-        
-        if (n_c != "" || e_c != "" || p1_c != "") {
+
+        if (n_c != "" || e_c != "" || p1_c != "" || t_c != "") {
 
         } else {
           // check 메시지가 모두 없을 때
-          
-          if (_name == "" || _email == "" || _pwd1 == "" || $('#ch1').is(':checked') == false) {
+
+          if (_name == "" || _email == "" || _pwd1 == "" || _tel == "" || $('#ch1').is(':checked') == false) {
 
             // 전체 입력 체크
             name_check();
             email_check();
             pwd_check();
             pw_rechek();
+            tel_check();
 
             if ($('#ch1').is(':checked') == true) {
               $('#ch_c').text("");
@@ -205,7 +131,7 @@
 
           } else {
             // 정보가 모두 입력되었을 때
-            
+
             if ($("#email_ok").prop("disabled") == true) {
               // 이메일 중복 확인을 했을 때
 
@@ -216,7 +142,7 @@
                 $.ajax({
                   url: '/join',
                   type: 'post',
-                  data: { "name": _name, "email": _email, "pwd": _pwd1 },
+                  data: { "name": _name, "email": _email, "pwd": _pwd1, "tel": _tel, "job": _job },
                   success: function (result) {
                     if (result == "-1") {
                       throw console.error('회원가입 에러 발생');
@@ -250,6 +176,7 @@
         } else {
 
           var _email = $('#email').val();
+
           $.ajax({
             async: false,
             url: '/join/email',
@@ -288,7 +215,8 @@
     })
   </script>
 
-<script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="/js/join.js"></script>
 
 </body>
 

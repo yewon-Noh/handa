@@ -1,70 +1,90 @@
-const mysql = require('mysql');
-const dbConfig = require('./dbConfig');
-const crypto = require('crypto');
+// username 입력 체크
+function name_check() {
+    var name = document.getElementById('name').value;
 
-var dbOptions = {
-    host: dbConfig.host,
-    port: dbConfig.port,
-    user: dbConfig.user,
-    password: dbConfig.password,
-    database: dbConfig.database
-};
-var conn = mysql.createConnection(dbOptions);
-conn.connect();
+    if (name == "") {
+      document.getElementById('n_c').innerHTML = "* 이름을 입력해주세요.";
+      // document.getElementById('n_c').style.color = 'red';
+    } else {
+      document.getElementById('n_c').innerHTML = "";
+    }
+  }
 
-function join(req, res){
+  // 비밀번호 재입력 체크
+  function pw_rechek() {
+    var pwd1 = document.getElementById('pwd1').value;
+    var pwd2 = document.getElementById('pwd2').value;
 
-    const name = req.body.name;
-    const email = req.body.email;
-    var pwd = req.body.pwd;
+    if (pwd2 == "") {
+      document.getElementById('p2_c').innerHTML = "* 비밀번호를 다시 입력해주세요.";
+      document.getElementById('p2_c').style.color = 'red';
+    } else {
 
-    // 비밀번호 암호화
-    const _key = crypto.randomBytes(4).toString('hex')
+      if (pwd1 == pwd2) {
+        document.getElementById('p2_c').innerHTML = "* 비밀번호가 일치합니다.";
+        document.getElementById('p2_c').style.color = 'blue';
+      } else {
+        document.getElementById('p2_c').innerHTML = "* 비밀번호가 일치하지 않습니다.";
+        document.getElementById('p2_c').style.color = 'red';
+      }
 
-    const _salt = crypto.randomBytes(64).toString('base64')
+    }
+  }
 
-    crypto.pbkdf2(pwd, _salt, 100, 64, 'sha512', (err, key) => {
-        if (err) throw err;
+  // 이메일 입력 체크
+  function email_check() {
+    var email = document.getElementById('email').value;
+    var email_ok = document.getElementById('email_ok');
 
-        var pw_e = key.toString('base64')
+    email_ok.disabled = false;
 
-        //데베 insert
-        var sql_key = 'INSERT INTO `key` VALUES(?, ?)';
-        conn.query(sql_key, [_key, _salt], function (err, results) {
+    var check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-            if (err)
-                console.log(err);
+    if (email.match(check) != null) {
+      document.getElementById('e_c').innerHTML = "";
+      document.getElementById('e_c').style.color = 'blue';
 
-            var sql_user = 'INSERT INTO `user` VALUES(?, ?, ?, ?)';
-            conn.query(sql_user, [email, name, pw_e, _key], function (err, results) {
-                if (err){
-                    console.log(err);
-                    return res.send("-1");
-                }    
+    } else {
+      document.getElementById('e_c').innerHTML = "* 이메일 형식이 바르지 않습니다.";
+      document.getElementById('e_c').style.color = 'red';
+    }
 
-                return res.send("1");
+  }
 
-            });//query
-        });//query
-    })
-}
+  // 비밀번호 입력 체크
+  function pwd_check() {
+    var pwd = document.getElementById('pwd1').value;
 
-function emailCheck(req, res){
-    var email = req.body.email;
-    var sql = 'SELECT * FROM user WHERE email=?';
-    conn.query(sql, [email], function (err, results) {
-        if (err){
-            console.log(err);
-            return res.send("1");
-        }
+    var check = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/i;
 
-        if (!results[0]){
-            return res.send("1");
-        }
+    if (pwd.length > 7) {
+      if (pwd.match(check) != null) {
+        document.getElementById('p1_c').innerHTML = "";
+      } else {
+        document.getElementById('p1_c').innerHTML = "* 하나 이상의 숫자, 영문, 특수문자를 입력해주세요.";
+        // document.getElementById('p1_c').style.color = 'red';
+      }
+    } else {
+      document.getElementById('p1_c').innerHTML = "* 8자리 이상 입력해주세요.";
+      // document.getElementById('p1_c').style.color = 'red';
+    }
 
-        return res.send("-1");
-    });//query
-}
+  }
 
-module.exports.join = join;
-module.exports.emailCheck = emailCheck;
+  // 연락처 체크
+  function tel_check(){
+    var tel = document.getElementById('tel').value;
+
+    var check = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+
+    if(tel == ""){
+      document.getElementById('t_c').innerHTML = "* 연락처를 입력해주세요.";
+    } else {
+      if(tel.match(check) != null) {
+        document.getElementById('t_c').innerHTML = "";
+      } else {
+        document.getElementById('t_c').innerHTML = "* 전화번호 형식이 바르지 않습니다.";
+        
+      }
+    }
+  }

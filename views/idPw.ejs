@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    /* .form-title {
+        font-size: 20pxrem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 1000px) {
+      .form-title {
+          font-size: 30px;
+      }
+    } */
+
+  </style>
+
+  <!-- Bootstrap CSS -->
+  <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/idPw.css" rel="stylesheet">
+
+  <title>HANDA</title>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 f-div">
+        <div class="bg-light w-100 me-md-3 pt-3 px-3 px-md-5 py-5 mb-3 mt-5 overflow-hidden">
+
+            <h3 class="form-title mb-3 fw-normal text-center py-3">이메일 찾기</h3>
+            
+            <form action="/" method="post">
+                <div class="col-12 mb-3">
+                    <label for="name" class="form-label">이름</label>
+                    <input type="text" class="form-control" id="name" placeholder="username" aria-describedby="button-addon2" required>
+                  </div>
+
+                  <div class="col-12 mb-3">
+                    <label for="tel" class="form-label">연락처</label>
+                    <input type="text" class="form-control" id="tel" placeholder="010-1111-2222"
+                      aria-describedby="button-addon2" required>
+                  </div>
+
+                  <!-- Button trigger modal -->
+                  <!-- <button class="submit w-100 btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">이메일 찾기</button> -->
+                  <input type="submit" class = "w-100 btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                   value="이메일 찾기">
+
+            </form>
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">이메일 찾기</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <% var name = 'test1' %>
+                        <%=name %> 님의 이메일은 test@test.com 입니다.
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" onclick="location.href='/login'">닫기</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+                </div>
+
+        <div class="bg-light w-100 pt-3 px-3 px-md-5 py-5 mb-3 mt-5 overflow-hidden">
+
+            <h3 class="form-title mb-3 fw-normal text-center py-3">비밀번호 찾기</h3>
+            
+            <form action="/setPw" method="post">
+                <div class="col-12 mb-3">
+                    <label for="name" class="form-label">이름</label>
+                    <input type="text" class="form-control" id="name" placeholder="username" aria-describedby="button-addon2" required>
+                  </div>
+
+                  <div class="col-12 mb-3">
+                    <label for="email" class="form-label">이메일</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com"
+                      aria-describedby="button-addon2" required>
+                  </div>
+
+                  <input type="submit" class="w-100 btn btn-warning" value="비밀번호 찾기">
+
+            </form>
+        </div>
+
+      </div>
+  </main>
+  
+  <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script>
+    var myModal = document.getElementById('myModal')
+  var myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', function () {
+    myInput.focus()
+  })
+
+</script>
+
+</body>
+
+</html>

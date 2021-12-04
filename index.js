@@ -26,6 +26,10 @@ app.get('/join', function(req, res){
 app.get('/idPw', function(req, res){
     res.render('idPw');
 })
+
+app.use('/setPw', function(req, res){
+    res.render('setPw');
+})
 // app.get('/study', function (req, res) {
 //     res.render('study')
 

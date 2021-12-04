@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/join.css" rel="stylesheet">
+
+  <title>HANDA</title>
+</head>
+
+<body>
+
+  <script>
+
+    // 비밀번호 재입력 체크
+    function pw_rechek() {
+      var pwd1 = document.getElementById('pwd1').value;
+      var pwd2 = document.getElementById('pwd2').value;
+
+      if (pwd2 == "") {
+        document.getElementById('p2_c').innerHTML = "비밀번호를 다시 입력해주세요.";
+        document.getElementById('p2_c').style.color = 'red';
+      } else {
+
+        if (pwd1 == pwd2) {
+          document.getElementById('p2_c').innerHTML = "* 비밀번호가 일치합니다.";
+          document.getElementById('p2_c').style.color = 'blue';
+        } else {
+          document.getElementById('p2_c').innerHTML = "* 비밀번호가 일치하지 않습니다.";
+          document.getElementById('p2_c').style.color = 'red';
+        }
+
+      }
+    }
+
+    // 비밀번호 입력 체크
+    function pwd_check() {
+      var pwd = document.getElementById('pwd1').value;
+
+      var check = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/i;
+
+      if (pwd.length > 7) {
+        if (pwd.match(check) != null) {
+          document.getElementById('p1_c').innerHTML = "";
+        } else {
+          document.getElementById('p1_c').innerHTML = "* 하나 이상의 숫자, 영문, 특수문자를 입력해주세요.";
+          document.getElementById('p1_c').style.color = 'red';
+        }
+      } else {
+        document.getElementById('p1_c').innerHTML = "* 8자리 이상 입력해주세요.";
+        document.getElementById('p1_c').style.color = 'red';
+      }
+
+    }
+
+  </script>
+
+  <main class="container">
+    <h1 class="h1 mb-3 fw-normal text-center py-3">비밀번호 변경</h1>
+
+    <div class="col-12 mb-3">
+      <label for="pwd1" class="form-label">비밀번호</label>
+      <input type="password" class="form-control" id="pwd1" placeholder="password" aria-describedby="button-addon2"
+        onchange="pwd_check()">
+      <div id="p1_c"></div>
+    </div>
+
+    <div class="col-12 mb-3">
+      <label for="pwd2" class="form-label">비밀번호 확인</label>
+      <input type="password" class="form-control" id="pwd2" placeholder="confirm password"
+        aria-describedby="button-addon2" onchange="pw_rechek()">
+      <div id="p2_c"></div>
+    </div>
+
+    <div class="mb-3">
+      <!-- Button trigger modal -->
+      <button class="submit w-100 btn btn-lg btn-warning mb-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">변경</button>
+    </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">비밀번호 변경</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              비밀번호가 변경되었습니다.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-bs-dismiss="modal" onclick="location.href='/login'">닫기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    function signup(data) {
+      console.log(data);
+    }
+
+    $(() => {
+      // 버튼 클릭시
+      $('.submit').click(() => {
+        var _pwd1 = $('#pwd1').val();
+        var _pwd2 = $('#pwd2').val();
+
+        var p1_c = $('#p1_c').text();
+
+
+        if (p1_c != "" || _pwd1 == "") {
+
+        } else {
+
+          if (_pwd1 != _pwd2) {
+
+          } else {
+            // 비밀번호가 일치할 때
+            $.ajax({
+              url: '/join',
+              type: 'post',
+              data: { "pwd": _pwd1 },
+              success: function (result) {
+                
+              },
+              error: function (error) {
+
+              },
+              complete: function (data) {
+                location.href = '/login';
+              }
+            })
+
+          }
+        }
+
+      })
+    })
+  </script>
+
+  <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script>
+    var myModal = document.getElementById('myModal')
+      var myInput = document.getElementById('myInput')
+  
+      myModal.addEventListener('hown.bs.modal', function () {
+        myInput.focus()
+      })
+  </script>
+
+</body>
+
+</html>

@@ -40,6 +40,8 @@
 }
 
 body {
+  min-width: 768px;
+
   /* background-color: #F5F7FA; */
   /* background-color: #f6f5f3; */
   /* background-color: #F7FAFA; */
@@ -87,4 +89,12 @@ header {
 #handa-t {
   color: #ffb549;
   /* color: #f9cc49; */
+}
+
+.l-flex {
+  flex-direction: row-reverse;
+}
+
+.handa-f {
+  min-width: 350px;
 }

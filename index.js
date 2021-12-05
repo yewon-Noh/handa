@@ -45,8 +45,6 @@ app.get('/join', function(req, res){
 
 app.post('/join', function(req, res){
     user.join(req, res)
-    // console.log('으악')
-    // return res.send("1");
 })
 
 app.post('/join/email', function (req, res){
@@ -55,6 +53,18 @@ app.post('/join/email', function (req, res){
 
 app.get('/idPw', function(req, res){
     res.render('idPw');
+})
+
+app.post('/idPw/id', function(req, res){
+    user.emailSearch(req, res)
+})
+
+app.post('/idPw/pw', function(req, res){
+    user.pwdSearch(req, res)
+})
+
+app.post('/idPw/setPw', function(req, res){
+    user.setPw(req, res)
 })
 
 app.use('/setPw', function(req, res){

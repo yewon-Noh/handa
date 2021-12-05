@@ -10,6 +10,18 @@ function name_check() {
     }
   }
 
+  // username 입력 체크 2
+function name_check_() {
+  var name = document.getElementById('name_').value;
+
+  if (name == "") {
+    document.getElementById('n_c_').innerHTML = "* 이름을 입력해주세요.";
+    // document.getElementById('n_c').style.color = 'red';
+  } else {
+    document.getElementById('n_c_').innerHTML = "";
+  }
+}
+
   // 비밀번호 재입력 체크
   function pw_rechek() {
     var pwd1 = document.getElementById('pwd1').value;
@@ -37,6 +49,23 @@ function name_check() {
     var email_ok = document.getElementById('email_ok');
 
     email_ok.disabled = false;
+
+    var check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+    if (email.match(check) != null) {
+      document.getElementById('e_c').innerHTML = "";
+      document.getElementById('e_c').style.color = 'blue';
+
+    } else {
+      document.getElementById('e_c').innerHTML = "* 이메일 형식이 바르지 않습니다.";
+      document.getElementById('e_c').style.color = 'red';
+    }
+
+  }
+
+  // 이메일 입력 체크 2
+  function email_check_() {
+    var email = document.getElementById('email').value;
 
     var check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
@@ -88,3 +117,4 @@ function name_check() {
       }
     }
   }
+

@@ -104,7 +104,7 @@ function name_check_() {
   function tel_check(){
     var tel = document.getElementById('tel').value;
 
-    var check = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+    var check = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
 
     if(tel == ""){
       document.getElementById('t_c').innerHTML = "* 연락처를 입력해주세요.";

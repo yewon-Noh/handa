@@ -10,6 +10,8 @@ const dbOptions = require('./public/js/dbConfig');
 const user = require('./public/js/user');
 
 const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
 app.set('port', process.env.PORT || 3000);
 
@@ -25,6 +27,7 @@ app.use(session({
 }));
 
 app.use(express.static('public'))
+
 
 app.get('/', function (req, res) {
     res.render('welcome')
@@ -85,7 +88,31 @@ app.get('/question', function(req, res) {
     res.render('question');
 })
 
+app.get('/chat', function(req, res) {
+    res.render('chat');
+})
 
-app.listen(app.get('port'), () => {
-    console.log(app.get('port'), '번 포트에서 대기중');
+io.on('connection', (socket)=>{
+    socket.on('request_message', (msg) => {
+        // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
+        io.emit('response_message', msg);
+    });
+
+    socket.on('disconnect', async () => {
+        console.log('user disconnected');
+    });
+});
+
+// TEST CODE GOES HERE
+(async function(){
+})();
+
+
+// app.listen(app.get('port'), () => {
+//     console.log(app.get('port'), '번 포트에서 대기중');
+// });
+
+
+http.listen(3000, () => {
+    console.log('Connected at 3000');
 });

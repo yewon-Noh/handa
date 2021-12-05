@@ -1,14 +1,33 @@
+require("dotenv").config();
+
 const express = require('express');
 const ejs = require('ejs');
+var session = require('express-session');
+var MySQLStore = require('express-mysql-session')(session);
+const bodyParser = require('body-parser');
+
+const dbOptions = require('./public/js/dbConfig');
+const user = require('./public/js/user');
 
 const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
 app.set('port', process.env.PORT || 3000);
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+    secret: 'secret',
+    store: new MySQLStore(dbOptions),
+    resave: false,
+    saveUninitialized: false
+}));
+
 app.use(express.static('public'))
+
 
 app.get('/', function (req, res) {
     res.render('welcome')
@@ -16,29 +35,44 @@ app.get('/', function (req, res) {
 });
 
 app.get('/login', function(req, res){
-    res.render('login');
+    res.render('login', {email:'', message_email:'', message_pw:''})
+})
+
+app.post('/login', function(req, res){
+    user.login(req, res)
 })
 
 app.get('/join', function(req, res){
     res.render('join');
 })
 
+app.post('/join', function(req, res){
+    user.join(req, res)
+})
+
+app.post('/join/email', function (req, res){
+    user.emailCheck(req, res)
+})
+
 app.get('/idPw', function(req, res){
     res.render('idPw');
+})
+
+app.post('/idPw/id', function(req, res){
+    user.emailSearch(req, res)
+})
+
+app.post('/idPw/pw', function(req, res){
+    user.pwdSearch(req, res)
+})
+
+app.post('/idPw/setPw', function(req, res){
+    user.setPw(req, res)
 })
 
 app.use('/setPw', function(req, res){
     res.render('setPw');
 })
-// app.get('/study', function (req, res) {
-//     res.render('study')
-
-// });
-
-// app.get('/study/1', function (req, res) {
-//     res.render('study1')
-
-// });
 
 app.get('/search', function (req, res) {
     res.render('search')
@@ -58,7 +92,27 @@ app.get('/chat', function(req, res) {
     res.render('chat');
 })
 
+io.on('connection', (socket)=>{
+    socket.on('request_message', (msg) => {
+        // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
+        io.emit('response_message', msg);
+    });
 
-app.listen(app.get('port'), () => {
-    console.log(app.get('port'), '번 포트에서 대기중');
+    socket.on('disconnect', async () => {
+        console.log('user disconnected');
+    });
+});
+
+// TEST CODE GOES HERE
+(async function(){
+})();
+
+
+// app.listen(app.get('port'), () => {
+//     console.log(app.get('port'), '번 포트에서 대기중');
+// });
+
+
+http.listen(3000, () => {
+    console.log('Connected at 3000');
 });

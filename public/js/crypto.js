@@ -1,26 +1,8 @@
-var crypto = require('crypto')
-var key = ''
-var salt = ''
-var pw = '2222'
+const crypto = require('crypto');
 
-crypto.randomBytes(4, (err, buf) => {
-    if (err) throw err;
-    key = buf.toString('hex');
+const password = 'abc123';
+const secret = 'MySecretKey1$1$234';
 
-    // console.log('key: ' + key)
-})
-console.log('key: ' + key)
+const hashed = crypto.createHmac('sha256', secret).update(password).digest('hex');
 
-crypto.randomBytes(64, (err, buf) => {
-    if (err) throw err;
-    salt = buf.toString('base64');
-
-    console.log('salt: ' + salt.toString('hex'))
-
-    crypto.pbkdf2(pw, salt, 100, 64, 'sha512', (err, key) => {
-        if (err) throw err;
-        
-        console.log(pw)
-        console.log('pw: ' + key.toString('base64')); 
-    })
-});
+console.log(hashed);

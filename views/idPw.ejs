@@ -6,23 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    /* .form-title {
-        font-size: 20pxrem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 1000px) {
-      .form-title {
-          font-size: 30px;
-      }
-    } */
-
-  </style>
-
   <!-- Bootstrap CSS -->
   <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link href="/css/idPw.css" rel="stylesheet">
@@ -31,88 +14,272 @@
 </head>
 
 <body>
-
   <main class="container">
 
     <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 f-div">
-        <div class="bg-light w-100 me-md-3 pt-3 px-3 px-md-5 py-5 mb-3 mt-5 overflow-hidden">
+      <div class="bg-light w-100 me-md-3 pt-3 px-3 px-md-5 py-5 mb-3 mt-5 overflow-hidden">
 
-            <h3 class="form-title mb-3 fw-normal text-center py-3">이메일 찾기</h3>
-            
-            <form action="/" method="post">
-                <div class="col-12 mb-3">
-                    <label for="name" class="form-label">이름</label>
-                    <input type="text" class="form-control" id="name" placeholder="username" aria-describedby="button-addon2" required>
-                  </div>
+        <h3 class="form-title mb-3 fw-normal text-center py-3">이메일 찾기</h3>
 
-                  <div class="col-12 mb-3">
-                    <label for="tel" class="form-label">연락처</label>
-                    <input type="text" class="form-control" id="tel" placeholder="010-1111-2222"
-                      aria-describedby="button-addon2" required>
-                  </div>
-
-                  <!-- Button trigger modal -->
-                  <!-- <button class="submit w-100 btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">이메일 찾기</button> -->
-                  <input type="submit" class = "w-100 btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                   value="이메일 찾기">
-
-            </form>
-
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">이메일 찾기</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <% var name = 'test1' %>
-                        <%=name %> 님의 이메일은 test@test.com 입니다.
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" onclick="location.href='/login'">닫기</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-                </div>
-
-        <div class="bg-light w-100 pt-3 px-3 px-md-5 py-5 mb-3 mt-5 overflow-hidden">
-
-            <h3 class="form-title mb-3 fw-normal text-center py-3">비밀번호 찾기</h3>
-            
-            <form action="/setPw" method="post">
-                <div class="col-12 mb-3">
-                    <label for="name" class="form-label">이름</label>
-                    <input type="text" class="form-control" id="name" placeholder="username" aria-describedby="button-addon2" required>
-                  </div>
-
-                  <div class="col-12 mb-3">
-                    <label for="email" class="form-label">이메일</label>
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com"
-                      aria-describedby="button-addon2" required>
-                  </div>
-
-                  <input type="submit" class="w-100 btn btn-warning" value="비밀번호 찾기">
-
-            </form>
+        <div class="col-12 mb-3">
+          <label for="name" class="form-label">이름</label>
+          <input type="text" class="form-control" id="name" placeholder="username" aria-describedby="button-addon2"
+            onchange="name_check()">
+          <div id="n_c" class="ch_c"></div>
         </div>
 
+        <div class="col-12 mb-3">
+          <label for="tel" class="form-label">연락처</label>
+          <input type="text" class="form-control" id="tel" placeholder="01011112222" aria-describedby="button-addon2"
+            onchange="tel_check()">
+          <div id="t_c" class="ch_c"></div>
+        </div>
+
+        <button class="e-submit w-100 btn btn-warning">이메일 찾기</button>
       </div>
+
+
+      <div class="bg-light w-100 pt-3 px-3 px-md-5 py-5 mb-3 mt-5 overflow-hidden">
+        <h3 class="form-title mb-3 fw-normal text-center py-3">비밀번호 찾기</h3>
+
+        <div class="col-12 mb-3">
+          <label for="p_name" class="form-label">이름</label>
+          <input type="text" class="form-control" id="name_" placeholder="username" aria-describedby="button-addon2"
+            onchange="name_check_()">
+          <div id="n_c_" class="ch_c"></div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <label for="p_email" class="form-label">이메일</label>
+          <input type="email" class="form-control" id="email" placeholder="name@example.com"
+            aria-describedby="button-addon2" onchange="email_check_()">
+          <div id="e_c" class="ch_c"></div>
+        </div>
+
+        <button class="p-submit w-100 btn btn-warning">비밀번호 찾기</button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+            <form action="/t" method="post">
+              <div class="col-12 mb-3">
+                <label for="pwd1" class="form-label">비밀번호</label>
+                <input type="password" class="form-control" id="pwd1" placeholder="password" aria-describedby="button-addon2"
+                  onchange="pwd_check()">
+                <div id="p1_c" class="ch_c"></div>
+              </div>
+          
+              <div class="col-12 mb-3">
+                <label for="pwd2" class="form-label">비밀번호 확인</label>
+                <input type="password" class="form-control" id="pwd2" placeholder="confirm password"
+                  aria-describedby="button-addon2" onchange="pw_rechek()">
+                <div id="p2_c" class="ch_c"></div>
+              </div>
+            </form>
+            
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning myModalBtn" data-bs-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
-  
+
   <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script>
-    var myModal = document.getElementById('myModal')
-  var myInput = document.getElementById('myInput')
 
-  myModal.addEventListener('shown.bs.modal', function () {
-    myInput.focus()
-  })
+    function idPw(data) {
+      console.log(data);
+    }
 
-</script>
+    //이메일 찾기 클릭시
+    $((() => {
+      $('.e-submit').click(() => {
+        var _name = $('#name').val();
+        var _tel = $('#tel').val();
+
+        var n_c = $('#n_c').text();
+        var t_c = $('#t_c').text();
+
+        if (n_c != "" || t_c != "") {
+
+        } else {
+
+          if (_name == "" || _tel == "") {
+            name_check();
+            tel_check();
+
+          } else {
+            // 이메일 찾기 
+            $.ajax({
+              url: '/idPw/id',
+              type: 'post',
+              data: { "name": _name, "tel": _tel },
+              success: function (result) {
+                if (result['result'] == false) {
+                  // 실패시 - 모달 닫기 버튼 클릭시 /idPw 로 이동하도록 
+                  $('.myModalBtn').attr("onclick", "location.href='/idPw'");
+                } else {
+                  // 성공시 - 모달 닫기 버튼 클릭시 /loing 으로 이동하도록
+                  $('.myModalBtn').attr('onclick', "location.href='/login'");
+                }
+
+                // 모달 표시
+                $('.modal-title').html("이메일 찾기");
+                $('.modal-body').html(result['msg']);
+                $('#myModal').modal('show');
+              },
+              error: function (error) {
+
+              },
+              complete: function (data) {
+
+              }
+            })
+          }
+
+        }
+
+      })
+    }))
+
+
+    //비밀번호 찾기 클릭시
+    $((() => {
+      $('.p-submit').click(() => {
+        var _name = $('#name_').val();
+        var _email = $('#email').val();
+
+        var n_c = $('#n_c_').text();
+        var e_c = $('#e_c').text();
+
+        if (n_c != "" || e_c != "") {
+
+        } else {
+
+          if (_name == "" || _email == "") {
+            name_check_();
+            email_check_();
+
+          } else {
+            // $('#myModal').modal('show');
+
+            // 이메일 유저가 있는지 우선 확인
+            $.ajax({
+                    url: '/idPw/pw',
+                    type: 'post',
+                    data: { "name": _name, "email": _email },
+                    success: function (result) {
+                      if (result['result'] == false) {              
+                        // 실패시 - 이메일 존재 하지 않음 표시 , 모달 닫기 버튼 클릭시 /idPw 로 이동하도록 
+                        $('.modal-title').html("비밀번호 찾기");
+                        $('.modal-body').html(result['msg']);
+                        $('.myModalBtn').attr("onclick", "location.href='/idPw'");
+                      } else {
+                        // 성공시 - 새비밀번호 변경
+                        $('.modal-title').html("새비밀번호 변경");
+                        $('.myModalBtn').html("변경");
+                        $('.myModalBtn').attr('onclick', "pwSet()");
+                        $('.myModalBtn').removeAttr('data-bs-dismiss');
+                      }
+
+                      // 모달 표시
+                      $('#myModal').modal('show');
+                    },
+                    error: function (error) {
+
+                    },
+                    complete: function (data) {
+
+                    }
+                  })
+
+          }
+
+        }
+
+      })
+    }))
+  
+
+    // 새비밀번호 변경
+    function pwSet() {
+      var _email = $('#email').val();
+        var _pwd1 = $('#pwd1').val();
+        var _pwd2 = $('#pwd2').val();
+
+        var p1_c = $('#p1_c').text();
+
+        if (p1_c != "" ||  _email == "" || _pwd1 == "") {
+
+        // 전체 입력 체크
+        pwd_check();
+        pw_rechek();
+
+          
+        } else {
+            // 정보가 모두 입력되었을 때
+
+            
+              if (_pwd1 != _pwd2) {
+
+              } else {
+
+                // 비밀번호가 일치할 때
+                $.ajax({
+                  url: '/idPw/setPw',
+                  type: 'post',
+                  data: { "email": _email, "pwd": _pwd1 },
+                  success: function (result) {
+                    if (result['result'] == false) {
+                      // 실패시 - 모달 닫기 버튼 클릭시 /idPw 로 이동하도록 
+                      $('.modal-title').html("새비밀번호 변경");
+                        $('.modal-body').html(result['msg']);
+                        $('.myModalBtn').attr('data-bs-dismiss', "modal");
+                        $('.myModalBtn').attr("onclick", "location.href='/idPw'");
+
+                    } else {
+                      // 성공시 - 모달 닫기 버튼 클릭시 /login 로 이동하도록 
+                      $('.modal-title').html("새비밀번호 변경");
+                        $('.modal-body').html(result['msg']);
+                        $('.myModalBtn').attr('data-bs-dismiss', "modal");
+                        $('.myModalBtn').attr("onclick", "location.href='/login'");
+
+                    }
+
+                    // 모달 변경 표시
+                    $('#myModal').modal('show');
+                  },
+                  error: function (error) {
+
+                  },
+                  complete: function (data) {
+                  }
+                })
+
+                }
+
+          } 
+  }
+
+    
+  </script>
+
+  <script src="/js/join.js"></script>
 
 </body>
 

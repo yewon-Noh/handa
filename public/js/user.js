@@ -71,7 +71,7 @@ function login(req, res){
         // 입력받은 비밀번호 암호하
         var password = hash(pwd);
 
-        // 정보가 잇는지 확인
+        // 정보가 있는지 확인
         sql = 'SELECT * FROM user WHERE u_email=? and u_password=?';
         conn.query(sql, [email, password], function (err, results) {
             if (err)

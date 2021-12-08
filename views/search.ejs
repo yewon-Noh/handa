@@ -38,7 +38,6 @@
 
     .card-img {
       max-width: 780px;
-      margin: 5px;
     }
 
     .div.pa {
@@ -52,6 +51,17 @@
     .bt-rg {
       margin-left: 10px;
       margin-right: 5px;
+    }
+
+    .hashtag {
+      border: 1px solid #dadada;
+      cursor: pointer;
+      cursor: hand;
+      background-color: #dadada;
+      /* color: white; */
+      padding: 5px;
+      border-radius: 2em;
+      font-size: small;
     }
   </style>
 
@@ -83,13 +93,13 @@
           </ul>
         </div> -->
 
-          <h4 class="logo">handa</h4>
+          <h4 class="logo" onclick="location.href='/'">handa</h4>
         </div>
 
         <!-- 로그인 후 -->
-        <!-- <div class="d-flex l-flex align-items-center">
-          <form class="w-100 me-3">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        <div class="d-flex align-items-center">
+          <form action="/search" method="post" class="w-100 me-3">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
           </form>
   
           <div class="flex-shrink-0 dropdown">
@@ -104,14 +114,14 @@
               <li><a class="dropdown-item" href="#">로그아웃</a></li>
             </ul>
           </div>
-        </div> -->
+        </div>
 
         <!-- 로그인 전 -->
-        <div class="d-flex l-flex">
+        <!-- <div class="d-flex l-flex">
           <div class="col-md text-end">
             <button type="button" class="btn btn-outline-warning">Login</button>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </header>
@@ -155,43 +165,46 @@
           </div>
         </div> -->
 
-        <div class="card border-warning mb-3">
-          <div class="row g-0">
-            <div class="card">
-              <div class="col-md-4 w-100">
-                <img class="card-img img-fluid" src="/images/ex/ex1.JPG" alt=""/>
-              </div>
-              <div class="card-body">
-                <div class="d-flex l-flex">
-                  <div class="col-md text-end">
-                    <a href="#" class="btn bg-warning bt-rg">풀이 보기</a>
-                  </div>
-                  <text class="card-tag">#태그1 #태그2</text>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- 검색 결과 값 받아와 -->
 
-        <div class="card border-warning mb-3">
-          <div class="row g-0">
-            <div class="card">
-              <div class="col-md-4 w-100">
-                <img class="card-img img-fluid" src="/images/ex/ex2.JPG" alt=""/>
-              </div>
-              <div class="card-body">
-                <div class="d-flex l-flex">
-                  <div class="col-md text-end">
-                    <a href="#" class="btn bg-warning bt-rg">풀이 보기</a>
-                  </div>5
-                  <text class="card-tag">#태그1 #태그2</text>
+        <% if(results == "") { %>
+          <!-- <h2>검색 결과가 존재하지 않습니다.</h2> -->
+          <div class="alert alert-secondary" role="alert">
+            검색 결과가 존재하지 않습니다.
+          </div>
+          <% } else { %>
+
+            <% for(var i=0; i<results.length; i++){ %>
+              
+              <% var q_id = results[i].q_id %>
+              <% var ct_id = results[i].ct_id %>
+              <% var q_img = results[i].q_img %>
+              <% var h_name = results[i].h_name %>
+  
+              <div class="card border-warning mb-3" name="<%= q_id %>">
+                <div class="row g-0">
+                  <div class="card">
+                    <div class="col-md-4 w-100">
+                      <img class="card-img img-fluid" src="/images/<%= ct_id %>/<%= q_img %>" alt=""/>
+                    </div>
+                    <div class="card-body">
+                      <div class="d-flex l-flex">
+                        <div class="col-md text-end">
+                          <a href="#" class="btn bg-warning bt-rg">풀이 보기</a>
+                        </div>
+                        <div class="col-md">
+                          <button type="button" class="btn hashtag"><%= h_name %></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+  
+            <% } %>
+         <% } %>
         
-       
+
       </div>
     </div>
 

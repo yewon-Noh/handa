@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 
 const dbOptions = require('./public/js/dbConfig');
 const user = require('./public/js/user');
+const search = require('./public/js/search');
 
 const app = express();
 const http = require('http').createServer(app);
@@ -77,6 +78,11 @@ app.use('/setPw', function(req, res){
 app.get('/search', function (req, res) {
     res.render('search')
 
+});
+
+app.post('/search', function (req, res) {
+    // console.log(req.body.a);
+    search.search(req, res);
 });
 
 app.get('/solutions', function (req, res) {

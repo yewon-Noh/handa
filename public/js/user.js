@@ -41,7 +41,7 @@ function join(req, res){
     const password = hash(pwd);
 
     // insert
-    var sql_user = 'INSERT INTO `user` VALUES(?, ?, ?, ?, ?)';
+    var sql_user = 'INSERT INTO `user` VALUES(?, ?, ?, ?, ?, NOW())';
     conn.query(sql_user, [email, password, name, tel, job], function (err, results) {
         if (err){
             console.log(err);

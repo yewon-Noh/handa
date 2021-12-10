@@ -99,7 +99,11 @@
         <!-- 로그인 후 -->
         <div class="d-flex align-items-center">
           <form action="/search" method="post" class="w-100 me-3">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+            <% var s_word = ""; %>
+            <% if(word != "") { %>
+              <% s_word = word %>
+            <% } %>
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word" value="<%=word %>">
           </form>
   
           <div class="flex-shrink-0 dropdown">
@@ -185,7 +189,7 @@
                 <div class="row g-0">
                   <div class="card">
                     <div class="col-md-4 w-100">
-                      <img class="card-img img-fluid" src="images/<%= ct_id %>/<%= q_img %>" alt=""/>
+                      <img class="card-img img-fluid" src="images/<%= ct_id %>/<%= q_img %>" alt="<%= q_id %>"/>
                     </div>
                     <div class="card-body">
                       <div class="d-flex l-flex">

@@ -9,14 +9,14 @@ function search(req, res){
     conn.query(sql, [word], function(err, results) {
         if(err){
             console.log(err);
-            return res.render('search', {results:""})
+            return res.render('search', {word:word, results:""})
         }
 
         if(!results[0]){
-            return res.render('search', {results:""})
+            return res.render('search', {word:word, results:""})
         }
 
-        return res.render('search', {results:results})
+        return res.render('search', {word:word, results:results})
     })
 }
 

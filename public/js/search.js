@@ -9,14 +9,23 @@ function search(req, res){
     conn.query(sql, [word, word], function(err, results) {
         if(err){
             console.log(err);
-            return res.render('search', {word:word, results:""})
+            if(!req.session.is_logined)
+                return res.render('search', {logined:"false", email:"", word:word, results:""})
+            else
+                return res.render('search', {logined:"true", email:req.session.email, word:word, results:""})
         }
 
         if(!results[0]){
-            return res.render('search', {word:word, results:""})
+            if(!req.session.is_logined)
+                return res.render('search', {logined:"false", email:"", word:word, results:""})
+            else
+                return res.render('search', {logined:"true", email:req.session.email, word:word, results:""})
         }
 
-        return res.render('search', {word:word, results:results})
+        if(!req.session.is_logined)
+            return res.render('search', {logined:"false", email:"", word:word, results:results})
+        else
+            return res.render('search', {logined:"true", email:req.session.email, word:word, results:results})
     })
 }
 

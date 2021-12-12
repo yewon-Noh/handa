@@ -43,30 +43,15 @@
   <header class="py-3 mb-3 border-bottom">
     <div class="container container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
       <div class="d-flex">
-        <!-- <div class="dropdown">
-        <a href="#" class="align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false"> -->
-        <!-- <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false"> -->
-        <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg> -->
-        <!-- <img src="/images/menu4.png" alt="menu" width="32" height="32">
-        </a>
-        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink">
-          <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
-          <li><a class="dropdown-item" href="#">Inventory</a></li>
-          <li><a class="dropdown-item" href="#">Customers</a></li>
-          <li><a class="dropdown-item" href="#">Products</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Reports</a></li>
-          <li><a class="dropdown-item" href="#">Analytics</a></li>
-        </ul>
-      </div> -->
 
-        <h4 class="logo">handa</h4>
+        <h4 class="logo" onclick="location.href='/'">handa</h4>
       </div>
 
+      <% if(logined=="true") { %>
       <!-- 로그인 후 -->
-      <div class="d-flex l-flex align-items-center">
-        <form class="w-100 me-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+      <div class="d-flex align-items-center">
+        <form action="/search" method="post" class="w-100 me-3">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
         </form>
 
         <div class="flex-shrink-0 dropdown">
@@ -76,19 +61,25 @@
           <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
             <li><a class="dropdown-item" href="#">질문하기</a></li>
             <li><a class="dropdown-item" href="#">채팅</a></li>
-            <li><a class="dropdown-item" href="#">내 정보</a></li>
+            <li><a class="dropdown-item" href="/my">내 정보</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">로그아웃</a></li>
+            <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
           </ul>
         </div>
       </div>
+      <% } else { %>
 
       <!-- 로그인 전 -->
-      <!-- <div class="d-flex l-flex">
+      <div class="d-flex align-items-center">
+        <form action="/search" method="post" class="w-100 me-3">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+        </form>
+
         <div class="col-md text-end">
-          <button type="button" class="btn btn-outline-warning">Login</button>
+          <button type="button" class="btn btn-outline-warning" onclick="location.href='/login'">Login</button>
         </div>
-      </div> -->
+      </div>
+      <% } %>
 
     </div>
   </header>

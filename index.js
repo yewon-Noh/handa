@@ -89,6 +89,10 @@ app.use('/setPw', function(req, res){
     res.render('setPw');
 })
 
+app.get('/my', function(req, res){
+    res.render('mypage');
+})
+
 app.get('/search', function (req, res) {
     if(!req.session.is_logined)
         res.render('search', {logined:"false", email:""})

@@ -78,9 +78,18 @@ function login(req, res){
                 console.log(err);
 
             if (!results[0])
-                return res.render('login', { email:email, message_email:'', message_pw: '비밀번호를 확인해주세요.' })
+                return res.render('login', { email:email, message_email:'', message_pw: '비밀번호를 확인해주세요.' });
             
-            return res.redirect('/')
+            req.session.is_logined = true;
+            req.session.email = results[0].u_email;
+            req.session.save(err => {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).send("<h1>500 error</h1>");
+                }
+                return res.redirect('/');
+            });
+            // return res.redirect('/')
 
         });
     });//query

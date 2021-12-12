@@ -131,7 +131,7 @@
                 <div class="row g-0">
                   <div class="card">
                     <div class="col-md-4 w-100">
-                      <img class="card-img img-fluid" src="images/<%= ct_id %>/<%= q_img %>" alt="<%= q_id %>"/>
+                      <img class="card-img img-fluid" src="/images/<%= ct_id %>/<%= q_img %>" alt="<%= q_id %>"/>
                     </div>
                     
                     </div>
@@ -161,7 +161,14 @@
                         <% var cm_text = comments[i].cm_text %>
 
                     <div class="d-flex text-muted pt-3">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle me-2">
+                      <div class="flex-shrink-0 dropdown">
+                        <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle me-2" value="<%=u_email%>">
+                        </a>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
+                          <li><a class="dropdown-item" href="#">채팅</a></li>
+                        </ul>
+                      </div>
                         
                     <p class="pb-3 mb-0 small lh-sm border-bottom">
                         <strong class="d-block text-gray-dark"><%=u_email%></strong>
@@ -174,7 +181,9 @@
                 <% } %>
                 <small class="d-block text-end mt-3 d-flex">
                         <form action="/solutions/add" method="post" class="w-100 me-3">
-                          <input type="search" class="form-control" placeholder="풀이를 입력해주세요.." name="comment">
+                          <input type="hidden" name="q_id" value="<%=q_id%>">
+                          <input type="hidden" name="email" value="<%=email%>">
+                          <input type="search" class="form-control" placeholder="풀이를 입력해주세요.." name="comment" id="comment" value="">
                         </form>
                 
                         <div class="flex-shrink-0">
@@ -193,6 +202,45 @@
 </main>
 
 <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+  function solutions(data) {
+      console.log(data);
+    }
+
+$((() => {
+      $('.btn-cm').click(() => {
+        var email = email;
+        var comment = $('#comment').val();
+        var q_id = q_id
+
+        if(comment == ""){
+
+        } else {
+
+          $.ajax({
+                    url: '/solutions/add',
+                    type: 'post',
+                    data: { "email": email, "comment": comment, "q_id":q_id },
+                    success: function (result) {
+                    if (result == "-1") {
+                      throw console.error('에러 발생');
+                    }
+                  },
+                  error: function (error) {
+
+                  },
+                  complete: function (data) {
+                    location.href = '/login';
+                  }
+                })
+        }
+        
+
+      })
+    }))
+
+</script>
       
   </body>
 </html>

@@ -4,7 +4,7 @@ var dbConfig = {
     host: '3.35.53.206',
     port: 3306,
     user: 'handa',
-    password: 'handa2021',
+    password: '1234',
     database: 'handa'
 };
 

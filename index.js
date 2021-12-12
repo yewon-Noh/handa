@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require('express');
 const ejs = require('ejs');
 var session = require('express-session');
-var MySQLStore = require('express-mysql-session')(session);
+// var MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');
 
 const dbOptions = require('./public/js/dbConfig');
@@ -20,20 +20,27 @@ app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
+app.use(
+    session({
+        // httpOnly: false,
+        secret: 'session_abcd',
+        // store: new MySQLStore(dbOptions),
+        resave: false,
+        saveUninitialized: false,
+    })
+);
+
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({
-    secret: 'secret',
-    store: new MySQLStore(dbOptions),
-    resave: false,
-    saveUninitialized: false
-}));
+
 
 app.use(express.static('public'))
 
 
 app.get('/', function (req, res) {
-    res.render('welcome')
-
+    if(!req.session.is_logined)
+        res.render('welcome', {logined:"false", email:""})
+    else
+        res.render('welcome', {logined:"true", email:req.session.email})
 });
 
 app.get('/login', function(req, res){
@@ -42,6 +49,12 @@ app.get('/login', function(req, res){
 
 app.post('/login', function(req, res){
     user.login(req, res)
+})
+
+app.get('/logout', function(req, res){
+    req.session.destroy(function (err) {
+        res.redirect('/')
+    })
 })
 
 app.get('/join', function(req, res){
@@ -77,7 +90,10 @@ app.use('/setPw', function(req, res){
 })
 
 app.get('/search', function (req, res) {
-    res.render('search')
+    if(!req.session.is_logined)
+        res.render('search', {logined:"false", email:""})
+    else
+        res.render('search', {logined:"true", email:req.session.email})
 
 });
 
@@ -87,13 +103,22 @@ app.post('/search', function (req, res) {
 });
 
 app.get('/solutions', function (req, res) {
-    res.render('solutions')
+    // if(!req.session.is_logined)
+    //     res.render('solutions', {logined:"false", email:""})
+    // else
+    //     res.render('solutions', {logined:"true", email:req.session.email})
+    solutions.solutions(req, res)
 
 });
 
 app.post('/solutions', function (req, res){
     solutions.solutions(req, res)
 })
+
+app.post('/solutions/add', function (req, res){
+    solutions.add(req, res)
+})
+
 
 app.get('/question', function(req, res) {
     res.render('question');

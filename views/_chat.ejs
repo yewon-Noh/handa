@@ -47,159 +47,162 @@
       }
     }
 
+    .chat-container {
+      margin: 5px 5px;
+      padding: 10px 70px 10px 70px;
+    }
+
     #roomWrap {
-    width: 200px;
-    
-}
+      width: 200px;
 
-#roomList {
-    border: 1px solid #ffc107;
-    /* border-radius: 5px; */
-    height: 812px;
-}
+    }
 
-#roomHeader {
-    background-color: #ffc107;
-    color: #fff;
-    height: 40px;
-    font-size: 18px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 5px;
-}
+    #roomList {
+      border: 1px solid #ffc107;
+      /* border-radius: 5px; */
+      height: 812px;
+    }
 
-.roomEl {
-    text-align: center;
-    border-bottom: 1px solid #ffc107;
-    padding: 10px 0px;
-    /* cursor: pointer; */
-}
+    #roomHeader {
+      background-color: #ffc107;
+      color: #fff;
+      height: 40px;
+      font-size: 18px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 5px;
+    }
 
-.roomEl:hover{
-    background: #f0f0f0;
-}
+    .roomEl {
+      text-align: center;
+      border-bottom: 1px solid #ffc107;
+      padding: 10px 0px;
+      /* cursor: pointer; */
+    }
 
-.roomEl.active{
-    background: #f0f0f0;
-}
+    .roomEl:hover {
+      background: #f0f0f0;
+    }
 
-
-#chatWrap {
-    width: 600px;
-    border: 1px solid #ffc107;
-}
-
-#chatHeader {
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    font-size: 25px;
-    font-weight: 900;
-    border-bottom: 1px solid #ffc107;
-}
-
-#chatLog {
-    height: 700px;
-    overflow-y: auto;
-    padding: 10px;
-}
-
-.myMsg {
-    text-align: right;
-}
-
-.anotherMsg {
-    text-align: left;
-    margin-bottom: 5px;
-}
-
-.msg {
-    display: inline-block;
-    border-radius: 15px;
-    padding: 7px 15px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-
-}
-
-.anotherMsg > .msg {
-    background-color: #f1f0f0;
-
-}
-
-.myMsg > .msg {
-    background-color: #ffc107;
-    color: #fff;
-}
-
-.anotherName {
-    font-size: 12px;
-    display: block;
-}
-
-#chatForm {
-    display: block;
-    width: 100%;
-    height: 50px;
-    border-top: 2px solid #f0f0f0;
-}
-
-#message {
-    width: 85%;
-    height: calc(100% - 1px);
-    border: none;
-    padding-bottom: 0;
-}
-
-#message:focus {
-    outline: none;
-}
-
-#chatForm > input[type=submit] {
-    outline: none;
-    border: none;
-    background: none;
-    color: #ffc107;
-    font-size: 17px;
-}
+    .roomEl.active {
+      background: #f0f0f0;
+    }
 
 
-#memberWrap{
-    width: 200px;
-    
-}
+    #chatWrap {
+      width: 600px;
+      border: 1px solid #ffc107;
+    }
 
-#memberList {
-    border: 1px solid #ffc107;
-    border-radius: 5px;
-    height: 700px;
-}
+    #chatHeader {
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      font-size: 25px;
+      font-weight: 900;
+      border-bottom: 1px solid #ffc107;
+    }
 
-#memberHeader {
-    height: 40px;
-    font-size: 18px;
-    line-height: 40px;
-    padding-left: 15px;
-    border-bottom: 1px solid #ffc107;
-    font-weight: 600;
-}
+    #chatLog {
+      height: 700px;
+      overflow-y: auto;
+      padding: 10px;
+    }
 
-.memberEl {
-    border-bottom: 1px solid #f0f0f0;
-    padding: 10px 20px;
-    font-size: 14px;
-}
+    .myMsg {
+      text-align: right;
+    }
+
+    .anotherMsg {
+      text-align: left;
+      margin-bottom: 5px;
+    }
+
+    .msg {
+      display: inline-block;
+      border-radius: 15px;
+      padding: 7px 15px;
+      margin-bottom: 10px;
+      margin-top: 5px;
+
+    }
+
+    .anotherMsg>.msg {
+      background-color: #f1f0f0;
+
+    }
+
+    .myMsg>.msg {
+      background-color: #ffc107;
+      color: #fff;
+    }
+
+    .anotherName {
+      font-size: 12px;
+      display: block;
+    }
+
+    #chatForm {
+      display: block;
+      width: 100%;
+      height: 50px;
+      border-top: 2px solid #f0f0f0;
+    }
+
+    #message {
+      width: 85%;
+      height: calc(100% - 1px);
+      border: none;
+      padding-bottom: 0;
+    }
+
+    #message:focus {
+      outline: none;
+    }
+
+    #chatForm>input[type=submit] {
+      outline: none;
+      border: none;
+      background: none;
+      color: #ffc107;
+      font-size: 17px;
+    }
 
 
-#contentCover{
-    width: 1280px;
-    margin: 0 auto;
-    padding-top: 20px;
-    display: flex;
-    /* justify-content: space-around; */
-}
+    #memberWrap {
+      width: 200px;
+
+    }
+
+    #memberList {
+      border: 1px solid #ffc107;
+      border-radius: 5px;
+      height: 700px;
+    }
+
+    #memberHeader {
+      height: 40px;
+      font-size: 18px;
+      line-height: 40px;
+      padding-left: 15px;
+      border-bottom: 1px solid #ffc107;
+      font-weight: 600;
+    }
+
+    .memberEl {
+      border-bottom: 1px solid #f0f0f0;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
 
 
+    #contentCover {
+      width: 1280px;
+      margin: 0 auto;
+      padding-top: 20px;
+      display: flex;
+      /* justify-content: space-around; */
+    }
   </style>
   <!-- Custom styles for this template -->
   <link href="/css/headers.css" rel="stylesheet">
@@ -253,6 +256,7 @@
           </div> -->
 
         <!-- 로그인 전 -->
+
         <div class="d-flex l-flex">
           <div class="col-md text-end">
             <button type="button" class="btn btn-outline-warning">Login</button>
@@ -262,39 +266,42 @@
       </div>
     </header>
   </main>
-  <div class="row">
 
-    <div id="contentWrap">
+  <div class="container">
+    <div class="chat-container">
+      <div class="row">
 
-      <div id="contentCover">
-          <div id="roomWrap">
+        <div id="contentWrap">
+
+          <div id="contentCover">
+            <div id="roomWrap">
               <div id="roomList">
-                  <div id="roomHeader">채팅 방 목록</div>
-                  <div id="roomSelect">
-                      <div class="roomEl active" data-id="1">Everyone</div>
-                      <div class="roomEl" data-id="2">VueJS</div>
-                      <div class="roomEl" data-id="3">ReactJS</div>
-                      <div class="roomEl" data-id="4">AngularJS</div>
-                  </div>
+                <div id="roomHeader">채팅 방 목록</div>
+                <div id="roomSelect">
+                  <div class="roomEl active" data-id="1">Everyone</div>
+                  <div class="roomEl" data-id="2">VueJS</div>
+                  <div class="roomEl" data-id="3">ReactJS</div>
+                  <div class="roomEl" data-id="4">AngularJS</div>
+                </div>
               </div>
-          </div>
-          <div id="chatWrap">
+            </div>
+            <div id="chatWrap">
               <div id="chatHeader">Everyone</div>
               <div id="chatLog">
-                  <div class="anotherMsg">
-                      <span class="anotherName">Jo</span>
-                      <span class="msg">Hello, Nice to meet you.</span>
-                  </div>
-                  <div class="myMsg">
-                      <span class="msg">Nice to meet you, too.</span>
-                  </div>
+                <div class="anotherMsg">
+                  <span class="anotherName">Jo</span>
+                  <span class="msg">Hello, Nice to meet you.</span>
+                </div>
+                <div class="myMsg">
+                  <span class="msg">Nice to meet you, too.</span>
+                </div>
               </div>
               <form id="chatForm">
-                  <input type="text" autocomplete="off" size="30" id="message" placeholder="메시지를 입력하세요">
-                  <input type="submit" value="보내기">
+                <input type="text" autocomplete="off" size="30" id="message" placeholder="메시지를 입력하세요">
+                <input type="submit" value="보내기">
               </form>
-          </div>
-          <!-- <div id="memberWrap">
+            </div>
+            <!-- <div id="memberWrap">
               <div id="memberList">
                   <div id="memberHeader">사람</div>
                   <div id="memberSelect">
@@ -304,8 +311,14 @@
                   </div>
               </div>
           </div> -->
+          </div>
+        </div>
       </div>
+    </div>
   </div>
+
+
+
 </body>
 
 </html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>HANDA</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .sol-container {
+        margin: 5px 5px;
+       padding: 10px 70px 10px 70px;
+      }
+
+      .hashtag {
+      border: 1px solid #dadada;
+      cursor: pointer;
+      cursor: hand;
+      background-color: #dadada;
+      /* color: white; */
+      padding: 5px;
+      border-radius: 2em;
+      font-size: small;
+    }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="/css/headers.css" rel="stylesheet">
+  </head>
+  <body>
+
+<main>
+  <!-- <h1 class="visually-hidden">Headers examples</h1> -->
+
+  <header class="py-3 mb-3 border-bottom">
+    <div class="container container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+      <div class="d-flex">
+        <!-- <div class="dropdown">
+        <a href="#" class="align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false"> -->
+        <!-- <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false"> -->
+        <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg> -->
+        <!-- <img src="/images/menu4.png" alt="menu" width="32" height="32">
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink">
+          <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
+          <li><a class="dropdown-item" href="#">Inventory</a></li>
+          <li><a class="dropdown-item" href="#">Customers</a></li>
+          <li><a class="dropdown-item" href="#">Products</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Reports</a></li>
+          <li><a class="dropdown-item" href="#">Analytics</a></li>
+        </ul>
+      </div> -->
+
+        <h4 class="logo" onclick="location.href='/'">handa</h4>
+      </div>
+
+      <!-- 로그인 후 -->
+      <div class="d-flex align-items-center">
+        <form action="/search" method="post" class="w-100 me-3">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+        </form>
+
+        <div class="flex-shrink-0 dropdown">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+            <li><a class="dropdown-item" href="#">질문하기</a></li>
+            <li><a class="dropdown-item" href="#">채팅</a></li>
+            <li><a class="dropdown-item" href="#">내 정보</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">로그아웃</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 로그인 전 -->
+      <!-- <div class="d-flex l-flex">
+        <div class="col-md text-end">
+          <button type="button" class="btn btn-outline-warning">Login</button>
+        </div>
+      </div> -->
+
+    </div>
+  </header>
+  
+  <div class="container">
+    <div class="sol-container">
+        <h3 class="mb-4"> 풀이보기 </h3>
+
+        <% if(results == "") { %>
+            <div class="alert alert-secondary" role="alert">
+                풀이가 존재하지 않습니다.
+            </div>
+        <% } else { %>
+
+            <% var q_id = results[0].q_id %>
+            <% var ct_id = results[0].ct_id %>
+            <% var q_img = results[0].q_img %>
+            <% var ct_name = results[0].ct_name %>
+            <% var h_name = results[0].h_name %>
+
+            <div>
+            <!-- 이미지 -->
+                <div class="card border-warning mb-3" name="<%= q_id %>">
+                <div class="row g-0">
+                  <div class="card">
+                    <div class="col-md-4 w-100">
+                      <img class="card-img img-fluid" src="images/<%= ct_id %>/<%= q_img %>" alt="<%= q_id %>"/>
+                    </div>
+                    
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div>
+            <!-- 해시태그 -->
+            <div class="col-md">
+                <button type="button" class="btn hashtag"><%= ct_name %></button>
+                <button type="button" class="btn hashtag"><%= h_name %></button>
+            </div>
+            </div>
+
+
+            <div>
+            <!-- 댓글 -->
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+                <h6 class="border-bottom pb-2 mb-0 fw-bold">풀이</h6>
+
+                <% if (comments == "") { %>
+                <% } else { %>
+
+                    <% for(var i=0; i<comments.length; i++) { %>
+                        <% var u_email = comments[i].u_email %>
+                        <% var cm_text = comments[i].cm_text %>
+
+                    <div class="d-flex text-muted pt-3">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle me-2">
+                        
+                    <p class="pb-3 mb-0 small lh-sm border-bottom">
+                        <strong class="d-block text-gray-dark"><%=u_email%></strong>
+                        <%=cm_text%>
+                    </p>
+                    </div>
+                
+                <% } %>
+                
+                <% } %>
+                <small class="d-block text-end mt-3 d-flex">
+                        <form action="/solutions/add" method="post" class="w-100 me-3">
+                          <input type="search" class="form-control" placeholder="풀이를 입력해주세요.." name="comment">
+                        </form>
+                
+                        <div class="flex-shrink-0">
+                            <!-- <button type="button" class="btn border-warning">제출</button> -->
+                            <button type="button" class="btn btn-secondary btn-cm">제출</button>
+                        </div>
+                </small>
+              </div>
+              <% } %>
+
+        </div>
+    </div>
+
+  </div>
+  
+</main>
+
+<script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+      
+  </body>
+</html>

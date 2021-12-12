@@ -142,7 +142,7 @@
       <div class="card-container">
         <div class="pa">
           <!-- <p>문제</p> -->
-          <h3 class="mb-4"> 검색 결과 </h3>
+          <h3 class="mb-4"> 검색결과 </h3>
         </div>
 
         <!-- <div class="card border-warning mb-3 ">
@@ -183,7 +183,10 @@
               <% var q_id = results[i].q_id %>
               <% var ct_id = results[i].ct_id %>
               <% var q_img = results[i].q_img %>
+              <% var ct_name = results[i].ct_name %>
               <% var h_name = results[i].h_name %>
+
+              
   
               <div class="card border-warning mb-3" name="<%= q_id %>">
                 <div class="row g-0">
@@ -193,10 +196,13 @@
                     </div>
                     <div class="card-body">
                       <div class="d-flex l-flex">
-                        <div class="col-md text-end">
-                          <a href="#" class="btn bg-warning bt-rg">풀이 보기</a>
-                        </div>
+                        <form action="/solutions" method="post" class="col-md text-end">
+                          <input type="hidden" name="q_id" value="<%= q_id %>">
+                          <!-- <a href="#" class="btn bg-warning bt-rg">풀이 보기</a> -->
+                          <button type="submit" class="btn bg-warning bt-rg">풀이 보기</button>
+                        </form>
                         <div class="col-md">
+                          <button type="button" class="btn hashtag"><%= ct_name %></button>
                           <button type="button" class="btn hashtag"><%= h_name %></button>
                         </div>
                       </div>

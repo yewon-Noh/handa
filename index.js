@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const dbOptions = require('./public/js/dbConfig');
 const user = require('./public/js/user');
 const search = require('./public/js/search');
+const solutions = require('./public/js/solutions');
 
 const app = express();
 const http = require('http').createServer(app);
@@ -89,6 +90,10 @@ app.get('/solutions', function (req, res) {
     res.render('solutions')
 
 });
+
+app.post('/solutions', function (req, res){
+    solutions.solutions(req, res)
+})
 
 app.get('/question', function(req, res) {
     res.render('question');

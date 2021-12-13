@@ -6,10 +6,22 @@ var session = require('express-session');
 // var MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');
 
+const multer = require('multer');
+const fs = require('fs');
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, './public/images/question/');
+    },
+    filename: (req, file, callback) => {
+        callback(null, file.originalname);
+    }
+})
+const uploader = multer({storage:storage});
+
 const dbOptions = require('./public/js/dbConfig');
 const user = require('./public/js/user');
 const search = require('./public/js/search');
-const solutions = require('./public/js/solutions');
+const qeustion = require('./public/js/question');
 const conn = require('./public/js/dbConfig');
 
 const app = express();
@@ -115,24 +127,33 @@ app.get('/solutions', function (req, res) {
     //     res.render('solutions', {logined:"false", email:""})
     // else
     //     res.render('solutions', {logined:"true", email:req.session.email})
-    solutions.solutions(req, res)
+    qeustion.solutions(req, res)
 
 });
 
 app.post('/solutions', function (req, res){
-    solutions.solutions(req, res)
+    qeustion.solutions(req, res)
 })
 
 app.post('/solutions/add', function (req, res){
-    solutions.add(req, res)
+    qeustion.add(req, res)
 })
-
 
 app.get('/question', function(req, res) {
     if(!req.session.is_logined)
         res.render('question', {logined:"false", email:""})
     else
         res.render('question', {logined:"true", email:req.session.email})
+})
+
+app.post('/question', function(req, res) {
+    qeustion.question(req, res);
+})
+
+app.post('/question/upload', uploader.single('f-n'), (req, res, next) => {
+    console.log('파일 업로드')
+    // qeustion.question(req, res);
+    // res.redirect('/question');
 })
 
 app.get('/chat', function(req, res) {

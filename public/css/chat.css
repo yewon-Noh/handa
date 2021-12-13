@@ -1,0 +1,125 @@
+.chatContainer {
+    margin: 5px 5px;
+    padding: 10px 70px 10px 70px;
+  }
+
+  #roomWrap {
+    width: 200px;
+
+  }
+
+  #roomList {
+    border: 1px solid #ffc107;
+    height: 812px;
+  }
+
+  #roomHeader {
+    background-color: #ffc107;
+    color: #fff;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .roomEl {
+    text-align: center;
+    border-bottom: 1px solid #ffc107;
+    padding: 10px 0px;
+  }
+
+  .roomEl:hover {
+    background: #f0f0f0;
+  }
+
+  .roomEl.active {
+    background: #f0f0f0;
+  }
+
+
+  #chatWrap {
+    width: 600px;
+    border: 1px solid #ffc107;
+  }
+
+  #chatHeader {
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 25px;
+    font-weight: 900;
+    border-bottom: 1px solid #ffc107;
+  }
+
+  #chatLog {
+    height: 700px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+
+  .myMsg {
+    text-align: right;
+  }
+
+  .anotherMsg {
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  .msg {
+    display: inline-block;
+    border-radius: 15px;
+    padding: 7px 15px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+
+  }
+
+  .anotherMsg>.msg {
+    background-color: #f1f0f0;
+
+  }
+
+  .myMsg>.msg {
+    background-color: #ffc107;
+    color: #fff;
+  }
+
+  .anotherName {
+    font-size: 12px;
+    display: block;
+  }
+
+  #chatForm {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-top: 2px solid #f0f0f0;
+  }
+
+  #message {
+    width: 85%;
+    height: calc(100% - 1px);
+    border: none;
+    padding-bottom: 0;
+  }
+
+  #message:focus {
+    outline: none;
+  }
+
+  #chatForm>input[type=submit] {
+    outline: none;
+    border: none;
+    background: none;
+    color: #ffc107;
+    font-size: 17px;
+  }
+
+  #contentCover {
+    width: 1280px;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: flex;
+  }

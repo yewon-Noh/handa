@@ -133,7 +133,10 @@ app.get('/question', function(req, res) {
 })
 
 app.get('/chat', function(req, res) {
-    res.render('chat');
+    if(!req.session.is_logined)
+        res.render('chat', {logined:"false", email:""})
+    else
+        res.render('chat', {logined:"true", email:req.session.email})
 })
 
 var chat = io.on('connection', (socket)=>{

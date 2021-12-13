@@ -19,19 +19,6 @@
   <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    /* #messages {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    #messages li {
-      padding: 5px 10px;
-    }
-
-    #messages li:nth-child(odd) {
-      background: #eee;
-    } */
 
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -47,7 +34,7 @@
       }
     }
 
-    .chat-container {
+    .chatContainer {
       margin: 5px 5px;
       padding: 10px 70px 10px 70px;
     }
@@ -59,7 +46,6 @@
 
     #roomList {
       border: 1px solid #ffc107;
-      /* border-radius: 5px; */
       height: 812px;
     }
 
@@ -77,7 +63,6 @@
       text-align: center;
       border-bottom: 1px solid #ffc107;
       padding: 10px 0px;
-      /* cursor: pointer; */
     }
 
     .roomEl:hover {
@@ -169,43 +154,21 @@
     }
 
 
-    #memberWrap {
-      width: 200px;
-
-    }
-
-    #memberList {
-      border: 1px solid #ffc107;
-      border-radius: 5px;
-      height: 700px;
-    }
-
-    #memberHeader {
-      height: 40px;
-      font-size: 18px;
-      line-height: 40px;
-      padding-left: 15px;
-      border-bottom: 1px solid #ffc107;
-      font-weight: 600;
-    }
-
-    .memberEl {
-      border-bottom: 1px solid #f0f0f0;
-      padding: 10px 20px;
-      font-size: 14px;
-    }
-
 
     #contentCover {
       width: 1280px;
       margin: 0 auto;
       padding-top: 20px;
       display: flex;
-      /* justify-content: space-around; */
     }
+
+
+
   </style>
   <!-- Custom styles for this template -->
   <link href="/css/headers.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -266,9 +229,9 @@
       </div>
     </header>
   </main>
-
+  <!-- 채팅-->
   <div class="container">
-    <div class="chat-container">
+    <div class="chatContainer">
       <div class="row">
 
         <div id="contentWrap">
@@ -296,29 +259,66 @@
                   <span class="msg">Nice to meet you, too.</span>
                 </div>
               </div>
-              <form id="chatForm">
-                <input type="text" autocomplete="off" size="30" id="message" placeholder="메시지를 입력하세요">
-                <input type="submit" value="보내기">
-              </form>
+              <form id="chatForm" onsubmit="return false">
+                <input type="text" id="message">
+                <input type="submit" id="send" value="보내기">
+            </form>
             </div>
-            <!-- <div id="memberWrap">
-              <div id="memberList">
-                  <div id="memberHeader">사람</div>
-                  <div id="memberSelect">
-                    <div class="memberEl">people1</div>
-                    <div class="memberEl">people2</div>
-                    <div class="memberEl">people3</div>
-                  </div>
-              </div>
-          </div> -->
-          </div>
+
+  </div>
         </div>
       </div>
     </div>
   </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 
+<script>
+  var socket = io();
 
+  var chatLog = document.getElementById('chatLog');
+  var chatForm = document.getElementById('chatForm');
+
+  chatForm.addEventListener('submit', function() {
+      var msg = $('#message');
+      
+      if (msg.val() == '') {
+          return;
+
+        } else {
+          socket.emit('SEND', msg.val());
+        
+          var msgLine = $('<div class="msgLine">');
+          var msgBox = $('<div class="msgBox">');
+
+          msgBox.append(msg.val());
+          msgBox.css('display', 'inline-block');
+
+          msgLine.css('text-align', 'right');
+          msgLine.append(msgBox);
+
+          $('#chatLog').append(msgLine);
+
+          msg.val('');
+          chatLog.scrollTop = chatView.scrollHeight;
+      }
+  });
+
+  socket.on('SEND', function(msg) {
+      var msgLine = $('<div class="msgLine">');
+      var msgBox = $('<div class="msgBox">');
+              
+      msgBox.append(msg);
+      msgBox.css('display', 'inline-block');
+
+      msgLine.append(msgBox);
+      $('#chatView').append(msgLine);
+
+      chatLog.scrollTop = chatView.scrollHeight;
+  });
+
+</script>
 </body>
 
 </html>

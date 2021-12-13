@@ -92,9 +92,14 @@ app.get('/chat', function(req, res) {
     res.render('chat');
 })
 
-app.get('/_chat', function(req, res) {
-    res.render('_chat');
-})
+// app.get('/_chat', function(req, res) {
+//     res.render('_chat');
+// })
+
+app.use('/_chat', function(req, resp) {
+    resp.sendFile(__dirname + '/_chat');
+});
+
 
 // io.on('connection', (socket)=>{
 //     socket.on('request_message', (msg) => {
@@ -115,7 +120,35 @@ app.get('/_chat', function(req, res) {
 // (async function(){
 // })();
 
+//은선
+// var server = http.createServer(app);
+// var io = require('socket.io')(server);
 
+// io.on('connection', (socket) => {
+//     socket.on('chat message', (message) => {
+//       io.emit('chat message', message);
+//     });
+//   });
+  
+
+io.on('connection', function(socket) {
+    socketList.push(socket);
+    console.log('User Join');
+ 
+    socket.on('SEND', function(message) {
+        console.log(message);
+        socketList.forEach(function(item, i) {
+            console.log(item.id);
+            if (item != socket) {
+                item.emit('SEND', message);
+            }
+        });
+    });
+ 
+    socket.on('disconnect', function() {
+        socketList.splice(socketList.indexOf(socket), 1);
+    });
+});
 
 
 // app.listen(app.get('port'), () => {

@@ -84,7 +84,12 @@
         <!-- 로그인 후 -->
         <div class="d-flex align-items-center">
           <form action="/search" method="post" class="w-100 me-3">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+            <!-- <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word" value="<%=word%>"> -->
+            <% var s_word = ""; %>
+            <% if(word != "") { %>
+              <% s_word = word %>
+            <% } %>
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word" value="<%=s_word %>">
           </form>
   
           <div class="flex-shrink-0 dropdown">
@@ -105,7 +110,12 @@
         <!-- 로그인 전 -->
       <div class="d-flex align-items-center">
         <form action="/search" method="post" class="w-100 me-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+          <!-- <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word"> -->
+          <% var s_word = ""; %>
+            <% if(word != "") { %>
+              <% s_word = word %>
+            <% } %>
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word" value="<%=s_word %>">
         </form>
 
         <div class="col-md text-end">

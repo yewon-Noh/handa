@@ -1,6 +1,6 @@
 .chatContainer {
-    margin: 0px 0px;
-    padding: 0px 70px 10px 70px;
+    margin: 5px 5px;
+    padding: 10px 70px 10px 70px;
   }
 
   #roomWrap {
@@ -10,20 +10,17 @@
 
   #roomList {
     border: 1px solid #ffc107;
-    height: 600px;
-    background-color: white;
+    height: 812px;
   }
 
   #roomHeader {
     background-color: #ffc107;
     color: #fff;
-    height: 60px;
+    height: 40px;
     font-size: 18px;
-    line-height: 60px;
+    line-height: 40px;
     text-align: center;
-    font-weight: 900;
-    /* border-radius: 5px; */
-    
+    border-radius: 5px;
   }
 
   .roomEl {
@@ -42,7 +39,7 @@
 
 
   #chatWrap {
-    width: 800px;
+    width: 600px;
     border: 1px solid #ffc107;
   }
 
@@ -53,12 +50,10 @@
     font-size: 25px;
     font-weight: 900;
     border-bottom: 1px solid #ffc107;
-    background-color: white;
   }
 
   #chatLog {
-    height: 488px;
-    background-color: white;
+    height: 700px;
     overflow-y: auto;
     padding: 10px;
   }
@@ -100,16 +95,7 @@
     display: block;
     width: 100%;
     height: 50px;
-    font-size: 18px;
-    font-weight: 900;
-    border-top: 2px solid #ffc107;
-
-
-
-    font-size: 18px;
-
-    
-
+    border-top: 2px solid #f0f0f0;
   }
 
   #message {
@@ -132,13 +118,8 @@
   }
 
   #contentCover {
-    /* width: 1280px; */
+    width: 1280px;
     margin: 0 auto;
-    padding-top: 5px;
+    padding-top: 20px;
     display: flex;
   }
-
-  .border-sq {
-    border-radius: 0 0 0 0;
-  }
-

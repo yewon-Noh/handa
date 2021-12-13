@@ -13,6 +13,8 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
+var socketList = [];
+
 app.set('port', process.env.PORT || 3000);
 
 app.set('view engine', 'ejs');
@@ -92,13 +94,13 @@ app.get('/chat', function(req, res) {
     res.render('chat');
 })
 
-// app.get('/_chat', function(req, res) {
-//     res.render('_chat');
-// })
+app.get('/_chat', function(req, res) {
+    res.render('_chat');
+})
 
-app.use('/_chat', function(req, resp) {
-    resp.sendFile(__dirname + '/_chat');
-});
+// app.use('/_chat', function(req, resp) {
+//     resp.sendFile(__dirname + '/_chat');
+// });
 
 
 // io.on('connection', (socket)=>{

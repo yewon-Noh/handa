@@ -98,6 +98,11 @@ app.get('/_chat', function(req, res) {
     res.render('_chat');
 })
 
+app.get('/mypage', function(req, res) {
+    res.render('mypage');
+})
+
+
 // app.use('/_chat', function(req, resp) {
 //     resp.sendFile(__dirname + '/_chat');
 // });

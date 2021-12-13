@@ -1,1 +1,110 @@
-my~~
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>HANDA</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .sol-container {
+        margin: 5px 5px;
+       padding: 10px 70px 10px 70px;
+      }
+
+      .hashtag {
+      border: 1px solid #dadada;
+      cursor: pointer;
+      cursor: hand;
+      background-color: #dadada;
+      /* color: white; */
+      padding: 5px;
+      border-radius: 2em;
+      font-size: small;
+    }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="/css/headers.css" rel="stylesheet">
+  </head>
+  <body>
+
+<main>
+  <!-- <h1 class="visually-hidden">Headers examples</h1> -->
+
+  <header class="py-3 mb-3 border-bottom">
+    <div class="container container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+      <div class="d-flex">
+
+        <h4 class="logo" onclick="location.href='/'">handa</h4>
+      </div>
+
+      <% if(logined=="true") { %>
+      <!-- 로그인 후 -->
+      <div class="d-flex align-items-center">
+        <form action="/search" method="post" class="w-100 me-3">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+        </form>
+
+        <div class="flex-shrink-0 dropdown">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+            <li><a class="dropdown-item" href="/question">질문하기</a></li>
+            <li><a class="dropdown-item" href="/chat">채팅</a></li>
+            <li><a class="dropdown-item" href="/my">내 정보</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
+          </ul>
+        </div>
+      </div>
+      <% } else { %>
+
+      <!-- 로그인 전 -->
+      <div class="d-flex align-items-center">
+        <form action="/search" method="post" class="w-100 me-3">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+        </form>
+
+        <div class="col-md text-end">
+          <button type="button" class="btn btn-outline-warning" onclick="location.href='/login'">Login</button>
+        </div>
+      </div>
+      <% } %>
+
+    </div>
+  </header>
+  
+  <!-- 여기다가 작업하세요 -->
+  
+</main>
+
+
+      
+  </body>
+</html>

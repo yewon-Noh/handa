@@ -10,6 +10,7 @@ const dbOptions = require('./public/js/dbConfig');
 const user = require('./public/js/user');
 const search = require('./public/js/search');
 const solutions = require('./public/js/solutions');
+const conn = require('./public/js/dbConfig');
 
 const app = express();
 const http = require('http').createServer(app);
@@ -135,10 +136,20 @@ app.get('/chat', function(req, res) {
     res.render('chat');
 })
 
-io.on('connection', (socket)=>{
+var chat = io.on('connection', (socket)=>{
     socket.on('request_message', (msg) => {
         // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
-        io.emit('response_message', msg);
+        // io.emit('response_message', msg);
+
+        var room = msg.room;
+        console.log(room)
+        conn.query("INSERT INTO chat_1 (room, uname, msg) VALUES (?, ?, ?)", [
+            msg.room, msg.name, msg.msg
+          ], function(){
+            console.log('Data Insert OK');
+        });
+        socket.join(room);
+        chat.to(room).emit('rMsg', msg);
     });
 
     socket.on('disconnect', async () => {

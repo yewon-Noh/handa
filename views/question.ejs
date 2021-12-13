@@ -29,6 +29,19 @@
           font-size: 3.5rem;
         }
       }
+
+      .qe-container {
+        margin: 5px 5px;
+       padding: 10px 70px 10px 70px;
+      }
+
+      .lb-license{
+        width: 20%;
+      }
+
+      .fs-20{
+        font-size: 20px;
+      }
     </style>
 
     
@@ -70,11 +83,7 @@
       <% } else { %>
 
       <!-- 로그인 전 -->
-      <div class="d-flex align-items-center">
-        <form action="/search" method="post" class="w-100 me-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
-        </form>
-
+      <div class="d-flex l-flex">
         <div class="col-md text-end">
           <button type="button" class="btn btn-outline-warning" onclick="location.href='/login'">Login</button>
         </div>
@@ -83,14 +92,8 @@
 
     </div>
   </header>
-
-  <!-- 내용 입력 -->
   
-  <div class="handa-w">
-
-    
-  
-  </div>
+  <!-- 여기다가 추가 -->
 </main>
 
 <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>

@@ -125,7 +125,10 @@ app.post('/solutions/add', function (req, res){
 
 
 app.get('/question', function(req, res) {
-    res.render('question');
+    if(!req.session.is_logined)
+        res.render('question', {logined:"false", email:""})
+    else
+        res.render('question', {logined:"true", email:req.session.email})
 })
 
 app.get('/chat', function(req, res) {

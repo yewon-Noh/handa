@@ -35,13 +35,14 @@
        padding: 10px 70px 10px 70px;
       }
 
-      .lb-license{
-        width: 20%;
-      }
-
       .fs-20{
         font-size: 20px;
       }
+
+      .que-container {
+      margin: 5px 5px;
+      padding: 10px 70px 10px 70px;
+    }
     </style>
 
     
@@ -83,7 +84,11 @@
       <% } else { %>
 
       <!-- 로그인 전 -->
-      <div class="d-flex l-flex">
+      <div class="d-flex align-items-center">
+        <form action="/search" method="post" class="w-100 me-3">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+        </form>
+
         <div class="col-md text-end">
           <button type="button" class="btn btn-outline-warning" onclick="location.href='/login'">Login</button>
         </div>
@@ -94,6 +99,45 @@
   </header>
   
   <!-- 여기다가 추가 -->
+  <div class="container">
+    <div class="que-container">
+      
+      <h3 class="mb-4"> 질문 등록 </h3>
+
+      <div class="col-12 mb-3">
+        <label for="job" class="form-label">자격증 명</label>
+  
+        <div class="input-group mb-3">
+          <select class="form-select" id="job">
+            <option selected>정보처리산업기사</option>
+            <option value="1">컴퓨터활용능력 2급</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-12 mb-4">
+        <label for="job" class="form-label">과목 명</label>
+  
+        <div class="input-group mb-3">
+          <select class="form-select" id="job">
+            <option selected>데이터베이스</option>
+            <option value="1">알고리즘</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="mb-3">질문</div>
+        <button type="button" class="btn btn-outline-secondary btn-sm">사진첨부</button>
+        <sqan id="img_name"></sqan>
+      </div>
+
+      <div class="mb-3 text-end">
+        <button type="button" class="btn btn-warning">등록하기</button>
+      </div>
+    </div>
+  </div>
+  
 </main>
 
 <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>

@@ -159,6 +159,51 @@ function setPw(req, res){
     });//query
   };
 
+  //mypage
+  function mypage(req,res) {
+      var email = req.session.email
+
+    var sql = 'SELECT * FROM user WHERE u_email=?';
+    conn.query(sql, [email], function (err, results) {
+        if (err) {
+            console.log(err);
+            res.render('mypage', {logined:"true", email:req.session.email, users:"", questions:"", comments:""})
+        }
+
+        if (!results[0])
+        res.render('mypage', {logined:"true", email:req.session.email, users:"", questions:"", comments:""})
+
+        console.log(results[0])
+
+        var sql2 = 'SELECT q_id, ct_name, h_name FROM question q, category c, hashtag h WHERE q.ct_id = c.ct_id and q.h_id = h.h_id and u_email=?';
+        conn.query(sql2, [email], function (err, results2) {
+            if (err) {
+                console.log(err);
+                res.render('mypage', {logined:"true", email:req.session.email, users:results, questions:"", comments:""}) 
+            }
+
+            if (!results2[0])
+                res.render('mypage', {logined:"true", email:req.session.email, users:results, questions:"", comments:""}) 
+
+            
+
+            var sql3 = 'SELECT * FROM comment WHERE u_email=?';
+            conn.query(sql3, [email], function (err, results3) {
+            if (err) {
+                console.log(err);
+                res.render('mypage', {logined:"true", email:req.session.email, users:results, questions:results2, comments:""}) 
+            }
+
+
+            if (!results3[0])
+                res.render('mypage', {logined:"true", email:req.session.email, users:results, questions:results2, comments:""})
+
+            res.render('mypage', {logined:"true", email:req.session.email, users:results, questions:results2, comments:results3})
+        });
+    });
+  });
+}
+
 module.exports.hash = hash
 module.exports.emailCheck = emailCheck
 module.exports.join = join
@@ -166,3 +211,4 @@ module.exports.login = login
 module.exports.emailSearch = emailSearch
 module.exports.pwdSearch = pwdSearch
 module.exports.setPw = setPw
+module.exports.mypage = mypage

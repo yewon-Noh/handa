@@ -93,16 +93,41 @@
             <div id="roomWrap">
               <div id="roomList">
                 <div id="roomHeader">채팅 방 목록</div>
+
+                <% if(rooms == "") { %>
+
+                <% } else { %>
+
                 <div id="roomSelect">
-                  <div class="roomEl active" data-id="1">Everyone</div>
-                  <div class="roomEl" data-id="2">VueJS</div>
-                  <div class="roomEl" data-id="3">ReactJS</div>
-                  <div class="roomEl" data-id="4">AngularJS</div>
+                  <% for(var i=0; i<rooms.length; i++) { %>
+                    <% if(email == rooms[i].u1_email) { %>
+                      <div class="roomEl" data-id="<%=rooms[i].ct_id%>"><%=rooms[i].u2_email%></div>
+                      <% } else { %>
+                      <div class="roomEl" data-id="<%=rooms[i].ct_id%>"><%=rooms[i].u1_email%></div>
+                      <% } %>
+                    
+                  <!-- <% if(i==0) { %>
+
+                    <% if(email == rooms[i].u1_email) { %>
+                    <div class="roomEl active" data-id="<%=rooms[i].ct_id%>"><%=rooms[i].u2_email%></div>
+                    <% } else { %>
+                    <div class="roomEl active" data-id="<%=rooms[i].ct_id%>"><%=rooms[i].u1_email%></div>
+                    <% } %>
+
+                  <% } else { %>
+                  <div class="roomEl" data-id="<%=rooms[i].ct_id%>">VueJS</div>
+                  
+                  <% } %> -->
+                  
+                  <% } %>
+
                 </div>
+
+                <% } %>
               </div>
             </div>
             <div id="chatWrap">
-              <div id="chatHeader">Everyone</div>
+              <div id="chatHeader"></div>
               <div id="chatLog">
               </div>
               <form id="chatForm" onsubmit="return false">

@@ -11,6 +11,7 @@ const user = require('./public/js/user');
 const search = require('./public/js/search');
 const solutions = require('./public/js/solutions');
 const conn = require('./public/js/dbConfig');
+const chatIn = require('./public/js/chat');
 
 const app = express();
 const http = require('http').createServer(app);
@@ -138,9 +139,11 @@ app.get('/question', function(req, res) {
 
 app.get('/chat', function(req, res) {
     if(!req.session.is_logined)
-        res.render('chat', {logined:"false", email:""})
+        ;
+        // res.render('chat', {logined:"false", email:""})
     else
-        res.render('chat', {logined:"true", email:req.session.email})
+        // res.render('chat', {logined:"true", email:req.session.email})
+        chatIn.chat(req, res);
 })
 
 var chat = io.on('connection', (socket)=>{

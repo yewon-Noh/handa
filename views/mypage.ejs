@@ -1,41 +1,42 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>HANDA</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>HANDA</title>
 
-    
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
 
-    <!-- Bootstrap core CSS -->
-<link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
+
+  <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
+    }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+    .sol-container {
+      margin: 5px 5px;
+      padding: 10px 70px 10px 70px;
+    }
 
-      .sol-container {
-        margin: 5px 5px;
-       padding: 10px 70px 10px 70px;
-      }
-
-      .hashtag {
+    .hashtag {
       border: 1px solid #dadada;
       cursor: pointer;
       cursor: hand;
@@ -45,153 +46,176 @@
       border-radius: 2em;
       font-size: small;
     }
+  </style>
 
-    </style>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="/css/headers.css" rel="stylesheet">
-    <link href="/css/mypage.css" rel="stylesheet">
-  </head>
-  <body>
+  <!-- Custom styles for this template -->
+  <link href="/css/headers.css" rel="stylesheet">
+  <link href="/css/mypage.css" rel="stylesheet">
+</head>
 
-<main>
-  <!-- <h1 class="visually-hidden">Headers examples</h1> -->
+<body>
 
-  <header class="py-3 mb-3 border-bottom">
-    <div class="container container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-      <div class="d-flex">
+  <main>
+    <!-- <h1 class="visually-hidden">Headers examples</h1> -->
 
-        <h4 class="logo" onclick="location.href='/'">handa</h4>
-      </div>
+    <header class="py-3 mb-3 border-bottom">
+      <div class="container container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+        <div class="d-flex">
 
-      <% if(logined=="true") { %>
-      <!-- 로그인 후 -->
-      <div class="d-flex align-items-center">
-        <form action="/search" method="post" class="w-100 me-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
-        </form>
-
-        <div class="flex-shrink-0 dropdown">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-            <li><a class="dropdown-item" href="/question">질문하기</a></li>
-            <li><a class="dropdown-item" onclick="window.open('/chat','chat','width=500,height=600,location=no,status=no,scrollbars=no');">채팅</a></li>
-            <li><a class="dropdown-item" href="/my">내 정보</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
-          </ul>
+          <h4 class="logo" onclick="location.href='/'">handa</h4>
         </div>
+
+        <% if(logined=="true" ) { %>
+          <!-- 로그인 후 -->
+          <div class="d-flex align-items-center">
+            <form action="/search" method="post" class="w-100 me-3">
+              <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+            </form>
+
+            <div class="flex-shrink-0 dropdown">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                <li><a class="dropdown-item" href="/question">질문하기</a></li>
+                <li><a class="dropdown-item"
+                    onclick="window.open('/chat','chat','width=500,height=600,location=no,status=no,scrollbars=no');">채팅</a>
+                </li>
+                <li><a class="dropdown-item" href="/my">내 정보</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
+              </ul>
+            </div>
+          </div>
+          <% } else { %>
+
+            <!-- 로그인 전 -->
+            <div class="d-flex align-items-center">
+              <form action="/search" method="post" class="w-100 me-3">
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+              </form>
+
+              <div class="col-md text-end">
+                <button type="button" class="btn btn-outline-warning" onclick="location.href='/login'">Login</button>
+              </div>
+            </div>
+            <% } %>
+
       </div>
-      <% } else { %>
+    </header>
 
-      <!-- 로그인 전 -->
-      <div class="d-flex align-items-center">
-        <form action="/search" method="post" class="w-100 me-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
-        </form>
-
-        <div class="col-md text-end">
-          <button type="button" class="btn btn-outline-warning" onclick="location.href='/login'">Login</button>
+    <!-- 여기다가 작업하세요 -->
+    <div class="container">
+      <div id="mycontainer">
+        <div id="div1">
+          <div id="infoline">내 정보
+            <!-- <button id="su" type="button" class="btn btn-warning btn-cm" style="float: right;">수정하기</button> -->
+          </div>
         </div>
-      </div>
-      <% } %>
 
+        <div id="div2">
+          <div id="div2_1">
+            <div class="row">
+              <div class="col-4">
+                <img id="people" src="https://github.com/mdo.png" alt="mdo" class="rounded-circle">
+              </div>
+              <div class="col-6">
+
+                <div class="row">
+                  <div class="col-4">
+                    <div id="u_email">이메일</div>
+                    <div id="u_name">이름</div>
+                    <div id="u_tel">휴대폰</div>
+                    <div id="u_job">직업</div>
+
+                  </div>
+                  <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+        <div class="mb-4" >
+          내질문
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">질문번호</th>
+                <th scope="col">자격증명</th>
+                <th scope="col">과목명</th>
+                <th scope="col">바로가기</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          내답변
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">질문번호</th>
+                <th scope="col" colspan="2">답변</th>
+                <th scope="col">바로가기</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td colspan="2">Mark</td>
+                <td>Otto</td>
+                
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td colspan="2">Jacob</td>
+                <td>Thornton</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry the Bird</td>
+                <td colspan="2">twitter</td>
+              
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
     </div>
-  </header>
-  
-  <!-- 여기다가 작업하세요 -->
-  <div class="container">
-    <div id="mycontainer">
-      <div id="topcontainer">
-        <div id="infoline">내 정보
-         <!-- <button id="su" type="button" class="btn btn-warning btn-cm" style="float: right;">수정하기</button> -->
-        </div>
-      </div>
 
-        <div id="middlecontainer">
-        <img src="https://github.com/mdo.png" alt="mdo" width="170" height="170" class="rounded-circle">
-        <div id="myemail">이메일 ________</div>
-        <div id="myname">이름 ________</div>
-        <div style="display: inline-block"> 휴대혼 _____</div>
-        <div style="display: inline-block"> 직업____</div>
-
-      </div>
-
-      <div class="mb-4">
-        내질문
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div>
-        내답변
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-     
-      </div>
-      </div>
-
-</main>
+  </main>
 
 
-      
-  </body>
+
+</body>
+
 </html>

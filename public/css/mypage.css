@@ -4,7 +4,7 @@
     border : 2px solid #ffc107;
 }
 
-#topcontainer {
+#div1 {
     margin: 20px 0px 20px 0px ;
     background-color: bisque;
 }
@@ -19,9 +19,16 @@
   }
 
   
-#middlecontainer {
+#div2 {
     margin: 20px 0px 20px 0px ;
     /* position: absolute; */
     background-color: bisque;
 }
+
+#people{
+    width: 150px;
+    height: 150px;
+    margin-left: 30px;
+}
+
 

@@ -30,16 +30,7 @@
         }
       }
 
-      .qe-container {
-        margin: 5px 5px;
-       padding: 10px 70px 10px 70px;
-      }
-
-      .fs-20{
-        font-size: 20px;
-      }
-
-      .que-container {
+      .card-container {
       margin: 5px 5px;
       padding: 10px 70px 10px 70px;
     }
@@ -100,77 +91,11 @@
   
   <!-- 여기다가 추가 -->
   <div class="container">
-    <div class="que-container">
+    <div class="card-container">
       
-      <h3 class="mb-4"> 질문 등록 </h3>
-
-      <!-- <div class="col-12 mb-3">
-        <label for="m-title" class="form-label">자격증 명</label>
-  
-        <div class="input-group mb-3">
-          <select class="form-select" id="m-title">
-            <option selected >정보처리산업기사</option>
-          </select>
+        <div class="alert alert-secondary" role="alert">
+          추가되었습니다.
         </div>
-      </div>
-
-      <div class="col-12 mb-4">
-        <label for="sub-title" class="form-label">과목 명</label>
-  
-        <div class="input-group mb-3">
-          <select class="form-select" id="sub-title">
-            <option selected>데이터베이스</option>
-            <option value="1">전자계산기구조</option>
-            <option value="2">시스템분석설계</option>
-            <option value="3">운영체제</option>
-            <option value="4">정보통신개론</option>
-          </select>
-        </div>
-      </div> -->
-
-      <!-- <div class="mb-3">
-        <div class="mb-3">질문</div>
-        <button type="button" class="btn btn-outline-secondary btn-sm">사진첨부</button>
-        <sqan id="img_name"></sqan>
-      </div>
-
-      <div class="mb-3 text-end">
-        <button type="button" class="btn btn-warning">등록하기</button>
-      </div> -->
-
-      <form action="/question/upload" method="post" enctype="multipart/form-data">
-        <div class="col-12 mb-3">
-          <label for="m-title" class="form-label">자격증 명</label>
-    
-          <div class="input-group mb-3">
-            <select class="form-select" id="m-title" name="title">
-              <option selected value="ieip">정보처리산업기사</option>
-            </select>
-          </div>
-        </div>
-  
-        <div class="col-12 mb-4">
-          <label for="sub-title" class="form-label">과목 명</label>
-    
-          <div class="input-group mb-3">
-            <select class="form-select" id="sub-title" name="stitle">
-              <option selected value="1">데이터베이스</option>
-              <option value="8">전자계산기구조</option>
-              <option value="9">시스템분석설계</option>
-              <option value="10">운영체제</option>
-              <option value="11">정보통신개론</option>
-            </select>
-          </div>
-        </div>
-        <input type="file" name="f-n"/> 
-        <div class="mb-3 text-end">
-          <input type="submit" class="btn btn-warning" value="등록하기">
-        </div>
-      </form>
-
-      <!-- <div class="mb-3 text-end">
-        <button type="button" class="submit btn btn-warning">등록하기</button>
-      </div> -->
     </div>
   </div>
   

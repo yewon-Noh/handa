@@ -68,46 +68,68 @@ function add(req, res){
 }
 
 // 질문
-function question(req, res){
-    console.log('??')
-    console.log(req)
-    var email = req.session.email;
-    var ct_name = req.body.ct_name;
-    var h_name = req.body.h_name;
+function question(email, req, res){
+
+    var ct_id = req.body.title;
+    var h_id = req.body.stitle;
     var img_name = req.file.originalname;
 
-    console.log(ct_name)
-    console.log(h_name)
+    // console.log(email)
+    // console.log(ct_name)
+    // console.log(h_name)
+    // console.log(img_name)
 
-    var sql = 'SELECT ct_id, h_id FROM category, hashtag WHERE ct_name=? and h_name=?';
-        conn.query(sql, [ct_name, h_name], function(err, results) {
-            if(err){
-                console.log(err);
-            }
-    
-            if(!results[0]){
-
-            }
-            console.log(results[0])
-                var ct_id = results[0].ct_id;
-                var h_id = results[0].h_id;
-
-                var sql = 'INSERT INTO question VALUES(null,?,?,?,?)';
-                conn.query(sql, [ct_id, email, img_name, h_id], function (err, results) {
-                    if (err){
-                        console.log(err);
+    var sql = 'INSERT INTO question VALUES(null,?,?,?,?, now())';
+    conn.query(sql, [ct_id, email, img_name, h_id], function (err, results) {
+        if (err){
+            console.log(err);
                         
-                    }    
+        }    
             
-                    if(!req.session.is_logined)
-                        res.render('search', {logined:"false", email:""})
-                    else
-                        res.render('search', {logined:"true", email:req.session.email})
+        if(!req.session.is_logined)
+            res.render('success', {logined:"false", email:""})
+        else
+            res.render('success', {logined:"true", email:req.session.email})
             
-                });//query
+        });//query
+
+    // var email = req.session.email;
+    // var ct_name = req.body.ct_name;
+    // var h_name = req.body.h_name;
+    // var img_name = req.file.originalname;
+
+    // console.log(ct_name)
+    // console.log(h_name)
+
+    // var sql = 'SELECT ct_id, h_id FROM category, hashtag WHERE ct_name=? and h_name=?';
+    //     conn.query(sql, [ct_name, h_name], function(err, results) {
+    //         if(err){
+    //             console.log(err);
+    //         }
+    
+    //         if(!results[0]){
+
+    //         }
+    //         console.log(results[0])
+    //             var ct_id = results[0].ct_id;
+    //             var h_id = results[0].h_id;
+
+    //             var sql = 'INSERT INTO question VALUES(null,?,?,?,?)';
+    //             conn.query(sql, [ct_id, email, img_name, h_id], function (err, results) {
+    //                 if (err){
+    //                     console.log(err);
+                        
+    //                 }    
+            
+    //                 if(!req.session.is_logined)
+    //                     res.render('search', {logined:"false", email:""})
+    //                 else
+    //                     res.render('search', {logined:"true", email:req.session.email})
+            
+    //             });//query
             
 
-        })
+    //     })
 
     
 

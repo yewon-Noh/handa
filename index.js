@@ -152,7 +152,8 @@ app.post('/question', function(req, res) {
 
 app.post('/question/upload', uploader.single('f-n'), (req, res, next) => {
     console.log('파일 업로드')
-    // qeustion.question(req, res);
+    var email = req.session.email;
+    qeustion.question(email, req, res);
     // res.redirect('/question');
 })
 

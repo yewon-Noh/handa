@@ -66,44 +66,39 @@
           <h4 class="logo" onclick="location.href='/'">handa</h4>
         </div>
 
-        <% if(logined=="true" ) { %>
+        <% if(logined=="true") { %>
           <!-- 로그인 후 -->
           <div class="d-flex align-items-center">
             <form action="/search" method="post" class="w-100 me-3">
               <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
             </form>
-
+    
             <div class="flex-shrink-0 dropdown">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
-                data-bs-toggle="dropdown" aria-expanded="false">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li><a class="dropdown-item" href="/question">질문하기</a></li>
-                <li><a class="dropdown-item"
-                    onclick="window.open('/chat','chat','width=500,height=600,location=no,status=no,scrollbars=no');">채팅</a>
-                </li>
+                <li><a class="dropdown-item" onclick="window.open('/chat','chat','width=500,height=600,location=no,status=no,scrollbars=no');">채팅</a></li>
                 <li><a class="dropdown-item" href="/my">내 정보</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
+                <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
               </ul>
             </div>
           </div>
           <% } else { %>
-
-            <!-- 로그인 전 -->
-            <div class="d-flex align-items-center">
-              <form action="/search" method="post" class="w-100 me-3">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
-              </form>
-
-              <div class="col-md text-end">
-                <button type="button" class="btn btn-outline-warning" onclick="location.href='/login'">Login</button>
-              </div>
+    
+          <!-- 로그인 전 -->
+          <div class="d-flex align-items-center">
+            <form action="/search" method="post" class="w-100 me-3">
+              <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
+            </form>
+    
+            <div class="col-md text-end">
+              <button type="button" class="btn btn-outline-warning" onclick="location.href='/login'">Login</button>
             </div>
-            <% } %>
+          </div>
+          <% } %>
 
       </div>
     </header>

@@ -9,25 +9,31 @@
     <style>
     #messages { list-style-type: none; margin: 0; padding: 0; }
     #messages li { padding: 5px 10px; }
-    #messages li:nth-child(odd) { background: #eee; }
+    #messages li:nth-child(odd) { 
+      background: #eee; 
+    }
+    .card-footer{
+      background: white;
+    }
 
     </style>
   </head>
   <body>
     <div class="row">
 
-      <!-- 대기실 -->
+      <!-- 채팅방 -->
       <div class="col-lg-4">
         <div class="card">
           <div class="card-header">
-            대기실
+            HANDA CHAT
           </div>
           <div class="card-body">
             <form action="">
+              <input type="hidden" id="email" value="<%=email%>">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" id="m" autocomplete="off" />
+                <input type="text" class="form-control border-warning" id="m" autocomplete="off" />
                 <div class="input-group-append">
-                  <button id="msg-send" class="btn btn-primary" placeholder="message">Send</button>
+                  <button id="msg-send" class="btn btn-warning placeholder="message">전송</button>
                 </div>
               </div>
             </form>
@@ -52,8 +58,12 @@
         
         // 클라이언트에서 reuqest_message 프로토콜로 id='m' 의 input 값을 보낸다.
         $('#msg-send').click(() => {
-          socket.emit('request_message', $('#m').val());
-          $('#m').val('');
+          var email = $('#email').val();
+          var mess = $('#m').val();
+          if(mess!=""){
+            socket.emit('request_message', email + " : " + mess);
+            $('#m').val('');
+          }
           return false; 
         });
 

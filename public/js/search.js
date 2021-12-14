@@ -4,7 +4,7 @@ const conn = require('./dbConfig');
 // 검색 수행
 function search(req, res){
     var word = req.body.word;
-    var sql = 'SELECT q.*, ct_name, h_name FROM question q, category ct, hashtag h WHERE q.h_id = h.h_id and q.ct_id = ct.ct_id and ct_name = ? or h_name=?';
+    var sql = 'SELECT q.*, ct_name, h_name FROM question q, category ct, hashtag h WHERE q.h_id = h.h_id and q.ct_id = ct.ct_id and h_name = ? or ct_name=?';
 
     conn.query(sql, [word, word], function(err, results) {
         if(err){

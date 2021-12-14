@@ -1,0 +1,35 @@
+#mycontainer{
+    margin: 0px 80px 0px 80px;
+    padding: 0px 70px 10px 70px;
+    border : 2px solid #ffc107;
+}
+
+#topcontainer {
+    margin: 50px 0px 50px 0px ;
+    background-color: bisque;
+}
+
+#infoline {
+    height: 60px;
+    text-align: left;
+    line-height: 60px;
+    font-size: 25px;
+    font-weight: 900;
+    border-bottom: 2px solid #ffc107;
+  }
+
+  
+#middlecontainer {
+    margin: 20px 0px 50px 0px ;
+    /* position: absolute; */
+    background-color: bisque;
+}
+
+#middlecontainer {
+    margin: 50px 0px 50px 0px ;
+    background-color: bisque;
+}
+  
+#myemail {
+    
+}

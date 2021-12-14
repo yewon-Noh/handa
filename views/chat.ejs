@@ -1,154 +1,67 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>HANDA</title>
+    <title>Socket Tester</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
-
-    
-
-    <!-- Bootstrap core CSS -->
-<link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+    #messages { list-style-type: none; margin: 0; padding: 0; }
+    #messages li { padding: 5px 10px; }
+    #messages li:nth-child(odd) { background: #eee; }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
     </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="/css/headers.css" rel="stylesheet">
-    <link href="/css/chat.css" rel="stylesheet">
   </head>
   <body>
+    <div class="row">
 
-<main>
-  <!-- <h1 class="visually-hidden">Headers examples</h1> -->
-
-  <header class="py-3 mb-3 border-bottom">
-    <div class="container container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-      <div class="d-flex">
-
-        <h4 class="logo" onclick="location.href='/'">handa</h4>
-      </div>
-
-      <% if(logined=="true") { %>
-      <!-- 로그인 후 -->
-      <div class="d-flex align-items-center">
-        <form action="/search" method="post" class="w-100 me-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="word">
-        </form>
-
-        <div class="flex-shrink-0 dropdown">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <input type="hidden" id="email" value="<%=email%>">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-            <li><a class="dropdown-item" href="/question">질문하기</a></li>
-            <li><a class="dropdown-item" href="/chat">채팅</a></li>
-            <li><a class="dropdown-item" href="/my">내 정보</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
-          </ul>
-        </div>
-      </div>
-      <% } else { %>
-
-      <!-- 로그인 전 -->
-      <div class="d-flex l-flex">
-        <div class="col-md text-end">
-          <button type="button" class="btn btn-outline-warning" onclick="location.href='/login'">Login</button>
-        </div>
-      </div>
-      <% } %>
-
-    </div>
-  </header>
-  
-  <!-- 여기부터 작성 -->
-  <div class="container">
-    <div class="chatContainer">
-      <div class="row">
-
-        <div id="contentWrap">
-
-          <div id="contentCover">
-            <div id="roomWrap">
-              <div id="roomList">
-                <div id="roomHeader">채팅 방 목록</div>
-                <div id="roomSelect">
-                  <div class="roomEl active" data-id="1">Everyone</div>
-                  <div class="roomEl" data-id="2">VueJS</div>
-                  <div class="roomEl" data-id="3">ReactJS</div>
-                  <div class="roomEl" data-id="4">AngularJS</div>
+      <!-- 대기실 -->
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            대기실
+          </div>
+          <div class="card-body">
+            <form action="">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="m" autocomplete="off" />
+                <div class="input-group-append">
+                  <button id="msg-send" class="btn btn-primary" placeholder="message">Send</button>
                 </div>
               </div>
-            </div>
-            <div id="chatWrap">
-              <div id="chatHeader">Everyone</div>
-              <div id="chatLog">
-              </div>
-              <form id="chatForm" onsubmit="return false">
-                <input type="text" id="message">
-                <input type="submit" id="send" value="보내기">
             </form>
-            </div>
-
-  </div>
+          </div>
+          <div class="card-footer">
+            <ul id="messages"></ul>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</main>
 
-<script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+
+      <!-- 방선택 -->
+      <div class="col-lg-8"></div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-        $(() => {
+      $(() => {
         /** Socket Starts **/
         const socket = io();
         
         // 클라이언트에서 reuqest_message 프로토콜로 id='m' 의 input 값을 보낸다.
-        $('#send').click(() => {
-          // socket.emit('request_message', $('#m').val());
-          socket.emit('request_message', {
-            name : $('#email').val(),
-            msg : $('#message').val(),
-            room : 'test'
-          })
-          $('#message').val('');
+        $('#msg-send').click(() => {
+          socket.emit('request_message', $('#m').val());
+          $('#m').val('');
           return false; 
         });
 
-        socket.on('rMsg', (res) => {
-          if($('#email').val() == res.name) 
-            var rmsg = '<div class="myMsg"><span class="msg">' + res.msg + '</span></div>';
-          else
-            var rmsg = '<div class="anotherMsg"><span class="msg">' + res.msg + '</span></div>';
-          
-          $('#chatLog').append(rmsg);
+        socket.on('response_message', (res) => {
+          $('#messages').prepend($('<li>').text(res));
         });
 
       });
     </script>
-      
   </body>
 </html>

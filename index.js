@@ -164,26 +164,37 @@ app.get('/chat', function(req, res) {
         res.render('chat', {logined:"true", email:req.session.email})
 })
 
-var chat = io.on('connection', (socket)=>{
++io.on('connection', (socket)=>{
     socket.on('request_message', (msg) => {
         // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
-        // io.emit('response_message', msg);
-
-        var room = msg.room;
-        console.log(room)
-        conn.query("INSERT INTO chat_1 (room, uname, msg) VALUES (?, ?, ?)", [
-            msg.room, msg.name, msg.msg
-          ], function(){
-            console.log('Data Insert OK');
-        });
-        socket.join(room);
-        chat.to(room).emit('rMsg', msg);
+        io.emit('response_message', msg);
     });
 
     socket.on('disconnect', async () => {
         console.log('user disconnected');
     });
 });
+
+// var chat = io.on('connection', (socket)=>{
+//     socket.on('request_message', (msg) => {
+//         // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
+//         // io.emit('response_message', msg);
+
+//         var room = msg.room;
+//         console.log(room)
+//         conn.query("INSERT INTO chat_1 (room, uname, msg) VALUES (?, ?, ?)", [
+//             msg.room, msg.name, msg.msg
+//           ], function(){
+//             console.log('Data Insert OK');
+//         });
+//         socket.join(room);
+//         chat.to(room).emit('rMsg', msg);
+//     });
+
+//     socket.on('disconnect', async () => {
+//         console.log('user disconnected');
+//     });
+// });
 
 // TEST CODE GOES HERE
 (async function(){

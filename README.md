@@ -22,7 +22,9 @@ DB : Mysql 8.0
 
 4. DB 구성
 
+
 [DB 설명](readme/DB.md)
+
 
 5. 최종발표 ppt
 
@@ -30,8 +32,11 @@ DB : Mysql 8.0
 
 6. 시연영상
 
-[로그인 유저 시연영상](readme/video/user_ver.mp4)
+**로그인 유저 시연영상**
+
 [![Watch the video](readme/git/handa1.png)](readme/video/user_ver.mp4)
 
-[미로그인 유저 시연영상](readme/video/no_user_ver.mp4)
+**미로그인 유저 시연영상**
+
 [![Watch the video](readme/git/handa2.png)](readme/video/user_ver.mp4)
+

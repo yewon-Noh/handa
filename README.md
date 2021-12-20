@@ -31,6 +31,6 @@ DB : Mysql 8.0
 6. 시연영상
 
 [로그인 유저 시연영상](readme/video/user_ver.mp4)
-<img src="readme/video/user_ver.mp4">
+[![Watch the video]()](readme/video/user_ver.mp4)
 
 [미로그인 유저 시연영상](readme/video/no_user_ver.mp4)

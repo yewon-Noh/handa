@@ -22,10 +22,10 @@ DB : Mysql 8.0
 
 5. 최종발표 ppt
 
-[최종발표 ppt](readme/ppt/최종발표.pptx)
+[최종발표 ppt](readme/ppt/최종발표.pdf)
 
 6. 시연영상
 
-![로그인 유저 시연영상](readme/video/user_ver.mp4)
+[로그인 유저 시연영상](readme/video/user_ver.mp4)
 
-![미로그인 유저 시연영상](readme/video/no_user_ver.mp4)
+[미로그인 유저 시연영상](readme/video/no_user_ver.mp4)

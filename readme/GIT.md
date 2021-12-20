@@ -15,7 +15,7 @@ su root
 3. ssh 키 생성
 
 ```bash
-ssh-keygen -t ed25519 -C "yewo2nn16@gmail.com"
+ssh-keygen -t ed25519 -C "@"
 ```
 
 4. ssh 공개키를 github에 등록
@@ -23,35 +23,35 @@ ssh-keygen -t ed25519 -C "yewo2nn16@gmail.com"
 ```bash
 vim /root/.ssh/id_ed25519.pub
 
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILdYRMp2rQKAGR07872ph+iujCJRoyjzdoSZLfjlW2AG yewo2nn16@gmail.com
+ssh-ed25519 AAAAC3....oSZLfjlW2AG @
 ```
 
-![01.JPG](git/01.JPG)
+![git.JPG](git/git.JPG)
 
 5. ssh 키가 정상적으로 등록됬는지 확인
 
 ```bash
-root@ip-172-31-4-206:~# ssh -T git@github.com
+root@ip-:~# ssh -T git@github.com
 Hi yewon-Noh! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 6. 사용할 폴더 생성
 
 ```bash
-root@ip-172-31-4-206:~# mkdir mtvs
-root@ip-172-31-4-206:~# cd mtvs/
+root@ip-:~# mkdir handa
+root@ip-:~# cd handa/
 ```
 
 7. 깃 복제(clone)
 
 ```bash
-root@ip-172-31-4-206:~/mtvs# git clone git@github.com:yewon-Noh/MTVS.git
+root@ip-:~/handa# git clone git@github.com:yewon-Noh/HANDA.git
 ```
 
 8. 깃 pull
 
 ```bash
-root@ip-172-31-4-206:~/mtvs/MTVS# git pull origin ver1.0
+root@ip-:~/handa/HANDA# git pull origin ver1.0
 ```
 
 9. node 시작

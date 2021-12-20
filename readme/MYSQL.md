@@ -7,13 +7,13 @@ sudo apt install mysql
 2. 초기설정
 
 ```bash
-ubuntu@ip-172-31-4-206:~$ sudo ufw allow mysql
+ubuntu@ip-:~$ sudo ufw allow mysql
 Rules updated
 Rules updated (v6)
 
-ubuntu@ip-172-31-4-206:~$ sudo systemctl start mysql
+ubuntu@ip-:~$ sudo systemctl start mysql
 
-ubuntu@ip-172-31-4-206:~$ sudo systemctl enable mysql
+ubuntu@ip-:~$ sudo systemctl enable mysql
 Synchronizing state of mysql.service with SysV service script with /lib/systemd/systemd-sysv-install.
 Executing: /lib/systemd/systemd-sysv-install enable mysql
 ```
@@ -21,7 +21,7 @@ Executing: /lib/systemd/systemd-sysv-install enable mysql
 3. mysql 접속
 
 ```bash
-ubuntu@ip-172-31-4-206:~$ sudo /usr/bin/mysql -u root -p
+ubuntu@ip-:~$ sudo /usr/bin/mysql -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 2
@@ -61,7 +61,7 @@ mysql> show variables like "%version%";
 5. root 비밀번호 설정
 
 ```bash
-mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('mtvs2021');
+mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('password');
 Query OK, 0 rows affected, 2 warnings (0.00 sec)
 ```
 
@@ -84,7 +84,7 @@ ubuntu@ip-172-31-4-206:~$ sudo service mysql restart
 ```bash
 ubuntu@ip-172-31-4-206:~$ sudo /usr/bin/mysql -u root -p
 
-mysql> create user 'mtvs'@'%' identified by 'mtvs2021';
+mysql> create user 'handa'@'%' identified by 'password';
 Query OK, 0 rows affected (0.00 sec)
 ```
 
@@ -98,9 +98,9 @@ Query OK, 1 row affected (0.01 sec)
 10. 유저 권한 부여
 
 ```bash
-mysql> grant all on mtvs.* to 'mtvs'@'%' identified by 'mtvs2021' with grant option;
+mysql> grant all on mtvs.* to 'handa'@'%' identified by 'password' with grant option;
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 
-mysql> grant all privileges on *.* to 'mtvs'@'%' with grant option;
+mysql> grant all privileges on *.* to 'handa'@'%' with grant option;
 Query OK, 0 rows affected (0.00 sec)
 ```

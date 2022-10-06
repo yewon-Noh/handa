@@ -1,69 +1,43 @@
-# <p align="center">HANDA</p>
 
-<p align="center">
-<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=white"/>
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
-<br />
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
-</p>
+# HANDA
 
-## 💻 프로젝트 설명
+구분: 프로젝트 <br/>
+담당 Skills & 사용 라이브러리: NodeJS, express, socket.io, EJS, HTML/CSS, JS, MySQL  <br/>
+진행기간: 2021년 12월 6일 → 2021년 12월 17일 <br/>
+팀 구성: 웹개발 2명 <br/> 
+한 줄 소개: 자격증 질문, 대답 및 오픈채팅을 이용한, 자격증 공부 커뮤니티 웹 플랫폼 <br/>
 
-자격증 공부를 할 때 기출문제 사이트를 많이 사용한다. 매년도 문제를 풀어보고 풀이를 볼 수 있어 유용하게 사용된다. 하지만 내가 직접 문제를 질문할 수는 없다.
+### Link
 
-따라서 자격증 문제를 질문할 수 있는 커뮤니티 플랫폼을 구현하고자 하였다.
+**구현 영상**
 
-![Alt Text](/menual/gif/no_user_ver.gif)
+[자격증 공부 커뮤니티_HANDA](https://www.youtube.com/watch?v=M9MBeBkm7co)
 
-<!-- [![HANDA](/menual/images/handa1.png)](플랫폼)
-[![HANDA](/menual/images/handa2.png)](플랫폼) -->
+### 상세내용
 
-## ⚙ HOW TO USE
+![최종발표2](https://user-images.githubusercontent.com/80824750/194252492-a47491b2-a5c5-4504-b114-571672481a22.png)
 
-NPM 모듈 설치
 
-```
-npm install
-```
+📚 교내 TCP/IP 과제로 진행한 프로젝트입니다. 한다(HANDA) 는 자격증 공부를 하는 사람들을 위해 모르는 문제를 질문하고 풀이할 수 있는 **자격증 공부 플랫폼** 입니다. 누구나 검색을 통해 자격증 질문을 검색하고 풀이를 볼 수 있으며, 로그인 사용자는 질문을 올리고 풀이를 작성할 수 있습니다. 또한 오픈 채팅을 통해 자격증을 공부하는 사람들과 커뮤니케이션이 가능합니다.
 
-실행
 
-```
-npm start
-```
+### 사용 기술 및 라이브러리
 
-Open http://localhost:3000 in browser
+- NodeJS, express, socket.io
+- EJS, JavaScript, CSS
+- MySQL
+- vscode, DBeaver
 
-## 💼 팀 구성
+### 담당한 기능
 
-👩‍💻 노예원
+- **DB** 설계
+- **문제 업로드** UI 및 기능
+- **문제 보기 및 풀이 작성** UI 및 기능
+- **오픈 채팅** 기능
 
-👩‍💻 이은선
+### 깨달은 점
 
-## 🔧 프로젝트 구조
-
-```
-HANDA
-⊢ public
-⊢ ⊢ css         // FE css 파일
-⊢ ⊢ images      // 이미지 파일
-⊢ ⊢ js          // BE route 파일
-⊢ package.json
-⊢ package-lock.json
-⊢ README.md
-⊢ menual  // 설정 메뉴얼 정리
-```
-
-### 🗂️ 시스템 구성도
-
-[![system](/menual/images/system.png)](메뉴구조)
-
-### 📑 DB 설계
-
-[![DB](/menual/images/db.png)](DB)
-
-## 🎥 프로젝트 결과물
-
-![Alt Text](/menual/gif/user_ver.gif)
+- 웹 개발을 통해 **웹** 구동 원리에 대해 이해하였다.
+- 사용자에게 제공되는 화면과 서버 코드를 분리하여 **MVC 패턴**으로 개발하고자 노력하였다.
+- 템플릿 뷰 엔진인 **EJS** 를 이용하여 서버에서 넘겨 받은 인자를 이용해 Dynamic Web 으로 구현하였다.
+- 웹 사이트 구축 시에도 다양한 프레임워크가 존재하며, 이 중 **부트스트랩(Bootstrap)**을 이용하여 개발하였다.
